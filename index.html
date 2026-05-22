@@ -42,7 +42,7 @@
     overflow-x: hidden;
   }
 
-  /* ── Decorative botanical SVG bg ── */
+  
   body::before {
     content: '';
     position: fixed;
@@ -195,20 +195,20 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
   #detail-panel {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: min(520px, 100vw);
-    background: var(--cream);
-    z-index: 101;
-    overflow-y: auto;
-    box-shadow: -6px 0 40px rgba(44,32,20,0.14);
-    transform: translateX(100%);
-    transition: transform 0.35s cubic-bezier(.22,1,.36,1);
-    display: flex;
-    flex-direction: column;
-  }
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(700px, 100vw); /* Aumentado de 520px para 700px */
+  background: var(--cream);
+  z-index: 101;
+  overflow-y: auto;
+  box-shadow: -6px 0 40px rgba(44,32,20,0.14);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1);
+  display: flex;
+  flex-direction: column;
+}
 
   #detail-panel.open { transform: translateX(0); }
 
@@ -269,14 +269,11 @@
 
   /* Tab navigation */
   .tab-nav {
-    display: flex;
-    gap: 0;
-    border-bottom: 1px solid var(--line);
-    margin-bottom: 1.8rem;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .tab-nav::-webkit-scrollbar { display: none; }
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 1.8rem;
+}
 
   .tab-btn {
     flex-shrink: 0;
@@ -320,7 +317,7 @@
     margin-bottom: 0.5rem;
   }
 
-  /* Melhoria drástica nas equações: fonte maior, fonte serifada clássica */
+
   .eq-block {
     background: var(--cream2);
     border-left: 3px solid var(--accent);
@@ -328,10 +325,10 @@
     padding: 1rem 1.2rem;
     margin: 0.5rem 0 1.5rem;
     font-family: 'Amiri', 'Atteron', serif;
-    font-size: 1.35rem; /* Aumentado para leitura confortável */
+    font-size: 1.35rem;
     line-height: 1.6;
     color: var(--ink);
-    overflow-x: auto; /* Evita que a equação quebre o layout se for longa */
+    overflow-x: auto;
   }
 
   .eq-block sub, .eq-block sup {
@@ -345,7 +342,7 @@
 
   .content-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem; /* Leitura mais agradável */
+    font-size: 0.95rem; 
     line-height: 1.7;
     color: var(--ink);
   }
@@ -356,7 +353,7 @@
   }
 
   .content-text li {
-    margin-bottom: 0.8rem; /* Respiro entre os pontos */
+    margin-bottom: 0.8rem; 
   }
 
   .content-text li::marker {
@@ -411,15 +408,16 @@
     .panel-body { padding: 1.5rem 1.5rem 2rem; }
     .panel-header { padding: 1.8rem 1.5rem 1rem; }
     .eq-block { font-size: 1.15rem; }
+    .tab-nav { flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <p class="header-eyebrow">Termodinâmica Química · Modelos de Equilíbrio</p>
+  <p class="header-eyebrow">· Termodinâmica II ·</p>
   <h1 class="header-title">Modelos baseados em <em>g<sup>E</sup></em></h1>
-  <p class="header-sub">Energia de Gibbs em Excesso &amp; Coeficiente de Atividade</p>
+  <p class="header-sub">Energia de Gibbs em excesso &amp; Coeficiente de atividade</p>
   <div class="header-rule"></div>
 </header>
 
@@ -497,23 +495,23 @@
     Prausnitz, J. M.; Lichtenthaler, R. N.; Azevedo, E. G. <em>Molecular Thermodynamics of Fluid-Phase Equilibria</em>, 3ª ed., Prentice Hall, 1999. &nbsp;·&nbsp;
     Smith, J. M.; Van Ness, H. C.; Abbott, M. M. <em>Introduction to Chemical Engineering Thermodynamics</em>, 8ª ed., McGraw-Hill, 2018.
   </div>
-  <p class="footer-sig">Modelagem Analítica Avançada</p>
+  <p class="footer-sig"><a href="https://www.linkedin.com/in/taili-borges/" target="_blank">Taili Lucas</a> · 2026</p>
 </footer>
 
 <script>
 const MODELS = {
   margules: {
     name: "Margules",
-    pill: "Empírico · Correlativo Clássico",
+    pill: "Empírico",
     color: "#c9a0a0",
     colorDark: "#8c5e5e",
     tabs: {
       "Equações": `
-        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
+        <p class="section-label">Energia de Gibbs em excesso (gᴱ/RT)</p>
         <div class="eq-block">
           <i>g</i><sup>E</sup> / <i>RT</i> = <i>x</i><sub>1</sub><i>x</i><sub>2</sub> (<i>A</i><sub>21</sub><i>x</i><sub>1</sub> + <i>A</i><sub>12</sub><i>x</i><sub>2</sub>)
         </div>
-        <p class="section-label">Coeficientes de Atividade (ln γᵢ)</p>
+        <p class="section-label">Coeficientes de atividade (ln γᵢ)</p>
         <div class="eq-block">
           ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [<i>A</i><sub>12</sub> + 2(<i>A</i><sub>21</sub> − <i>A</i><sub>12</sub>)<i>x</i><sub>1</sub>]<br><br>
           ln <i>γ</i><sub>2</sub> = <i>x</i><sub>1</sub><sup>2</sup> [<i>A</i><sub>21</sub> + 2(<i>A</i><sub>12</sub> − <i>A</i><sub>21</sub>)<i>x</i><sub>2</sub>]
@@ -546,11 +544,11 @@ const MODELS = {
     colorDark: "#4a7a8c",
     tabs: {
       "Equações": `
-        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
+        <p class="section-label">Energia de Gibbs em excesso (gᴱ/RT)</p>
         <div class="eq-block">
           <i>g</i><sup>E</sup> / <i>RT</i> = (<i>A</i><sub>12</sub><i>A</i><sub>21</sub><i>x</i><sub>1</sub><i>x</i><sub>2</sub>) / (<i>A</i><sub>12</sub><i>x</i><sub>1</sub> + <i>A</i><sub>21</sub><i>x</i><sub>2</sub>)
         </div>
-        <p class="section-label">Coeficientes de Atividade (ln γᵢ)</p>
+        <p class="section-label">Coeficientes de atividade (ln γᵢ)</p>
         <div class="eq-block">
           ln <i>γ</i><sub>1</sub> = <i>A</i><sub>12</sub> / [1 + (<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)/(<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)]<sup>2</sup><br><br>
           ln <i>γ</i><sub>2</sub> = <i>A</i><sub>21</sub> / [1 + (<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)]<sup>2</sup>
@@ -582,11 +580,11 @@ const MODELS = {
     colorDark: "#3d7a5a",
     tabs: {
       "Equações": `
-        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
+        <p class="section-label">Energia de Gibbs em excesso (gᴱ/RT)</p>
         <div class="eq-block">
           <i>g</i><sup>E</sup> / <i>RT</i> = −Σ <i>x</i><sub>i</sub> ln(Σ <i>x</i><sub>j</sub>Λ<sub>ij</sub>)
         </div>
-        <p class="section-label">Coeficiente de Atividade (Sistema Binário)</p>
+        <p class="section-label">Coeficiente de atividade (Sistema Binário)</p>
         <div class="eq-block">
           ln <i>γ</i><sub>1</sub> = −ln(<i>x</i><sub>1</sub> + Λ<sub>12</sub><i>x</i><sub>2</sub>) + <i>x</i><sub>2</sub> [ (Λ<sub>12</sub>) / (<i>x</i><sub>1</sub> + Λ<sub>12</sub><i>x</i><sub>2</sub>) − (Λ<sub>21</sub>) / (<i>x</i><sub>2</sub> + Λ<sub>21</sub><i>x</i><sub>1</sub>) ]
         </div>
@@ -616,11 +614,11 @@ const MODELS = {
     colorDark: "#8c7050",
     tabs: {
       "Equações": `
-        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
+        <p class="section-label">Energia de Gibbs em excesso (gᴱ/RT)</p>
         <div class="eq-block">
           <i>g</i><sup>E</sup> / <i>RT</i> = Σ <i>x</i><sub>i</sub> [ (Σ <i>τ</i><sub>ji</sub><i>G</i><sub>ji</sub><i>x</i><sub>j</sub>) / (Σ <i>G</i><sub>ki</sub><i>x</i><sub>k</sub>) ]
         </div>
-        <p class="section-label">Coeficiente de Atividade (ln γ₁ binário)</p>
+        <p class="section-label">Coeficiente de atividade (ln γ₁ binário)</p>
         <div class="eq-block">
           ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [ <i>τ</i><sub>21</sub>( <i>G</i><sub>21</sub> / (<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub><i>G</i><sub>21</sub>) )<sup>2</sup> + (<i>τ</i><sub>12</sub><i>G</i><sub>12</sub>) / (<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub><i>G</i><sub>12</sub>)<sup>2</sup> ]
         </div>
@@ -655,7 +653,7 @@ const MODELS = {
         <div class="eq-block">
           <i>g</i><sup>E</sup> / <i>RT</i> = (<i>g</i><sup>E</sup> / <i>RT</i>)<sub>combinação</sub> + (<i>g</i><sup>E</sup> / <i>RT</i>)<sub>residual</sub>
         </div>
-        <p class="section-label">Coeficiente de Atividade (ln γᵢ)</p>
+        <p class="section-label">Coeficiente de atividade (ln γᵢ)</p>
         <div class="eq-block">
           ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup>
         </div>
