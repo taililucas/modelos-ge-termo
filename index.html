@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelos Baseados em gE | Termodinâmica</title>
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --center-node: #0f172a;
+            --panel-bg: #ffffff;
+            
+            /* Cores dos Modelos */
+            --c-margules: #3b82f6; /* Azul */
+            --c-vanlaar: #10b981;  /* Verde */
+            --c-wilson: #8b5cf6;   /* Roxo */
+            --c-nrtl: #f43f5e;     /* Rosa/Vermelho */
+            --c-uniquac: #f59e0b;  /* Laranja */
+            --c-unifac: #06b6d4;   /* Ciano */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow: hidden; /* Evita scroll */
+        }
+
+        /* Container do Mapa Mental */
+        .mindmap-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Círculo pontilhado de fundo */
+        .orbit {
+            position: absolute;
+            border: 2px dashed #cbd5e1;
+            border-radius: 50%;
+            z-index: 1;
+            transition: width 0.3s, height 0.3s;
+        }
+
+        /* Nó Central */
+        .center-node {
+            position: absolute;
+            width: 160px;
+            height: 160px;
+            background-color: var(--center-node);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            z-index: 10;
+        }
+
+        /* Nós Filhos (Modelos) */
+        .node {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 5;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s;
+        }
+
+        .node:hover {
+            transform: translate(-50%, -50%) scale(1.15) !important;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            z-index: 20;
+        }
+
+        /* Painel Lateral */
+        .side-panel {
+            position: fixed;
+            top: 0;
+            right: -100%; /* Escondido fora da tela */
+            width: 400px;
+            max-width: 100vw;
+            height: 100vh;
+            background: var(--panel-bg);
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            transition: right 0.4s ease-in-out;
+            z-index: 100;
+            overflow-y: auto;
+        }
+
+        .side-panel.active {
+            right: 0;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .panel-header {
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .panel-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .category {
+            margin-bottom: 25px;
+        }
+
+        .category h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category h3::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--model-color, #cbd5e1);
+        }
+
+        .category p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            .center-node { width: 120px; height: 120px; font-size: 1rem; }
+            .node { width: 90px; height: 90px; font-size: 0.85rem; }
+            .side-panel { width: 100vw; padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mindmap-container">
+        <!-- Órbita visual -->
+        <div class="orbit"></div>
+
+        <!-- Nó Central -->
+        <div class="center-node">Modelos<br>baseados em g<sup>E</sup></div>
+
+        <!-- Nós dos Modelos -->
+        <div class="node" style="background-color: var(--c-margules);" onclick="openPanel('margules')">Margules</div>
+        <div class="node" style="background-color: var(--c-vanlaar);" onclick="openPanel('vanlaar')">van Laar</div>
+        <div class="node" style="background-color: var(--c-wilson);" onclick="openPanel('wilson')">Wilson</div>
+        <div class="node" style="background-color: var(--c-nrtl);" onclick="openPanel('nrtl')">NRTL</div>
+        <div class="node" style="background-color: var(--c-uniquac);" onclick="openPanel('uniquac')">UNIQUAC</div>
+        <div class="node" style="background-color: var(--c-unifac);" onclick="openPanel('unifac')">UNIFAC</div>
+    </div>
+
+    <!-- Painel Lateral (Modal) -->
+    <div class="side-panel" id="infoPanel">
+        <button class="close-btn" onclick="closePanel()">&times;</button>
+        
+        <div class="panel-header">
+            <h2 class="panel-title" id="p-title">Nome do Modelo</h2>
+        </div>
+
+        <div class="category">
+            <h3>1. Equações (g<sup>E</sup>/RT e ln &gamma;<sub>i</sub>)</h3>
+            <p id="p-eq">Carregando equações...</p>
+        </div>
+
+        <div class="category">
+            <h3>2. Tipos de mistura indicados</h3>
+            <p id="p-mix">Carregando tipos de mistura...</p>
+        </div>
+
+        <div class="category">
+            <h3>3. Características e base teórica</h3>
+            <p id="p-char">Carregando base teórica...</p>
+        </div>
+
+        <div class="category">
+            <h3>4. Limitações</h3>
+            <p id="p-limit">Carregando limitações...</p>
+        </div>
+    </div>
+
+    <script>
+        // Dados temporários (Placeholders)
+        const modelsData = {
+            margules: {
+                title: "Margules",
+                color: "var(--c-margules)",
+                eq: "[Placeholder] Inserir equação de gE/RT e ln &gamma;i para Margules. Ex: ln &gamma;1 = x2² [A12 + 2(A21 - A12)x1]",
+                mix: "[Placeholder] Misturas simples, componentes com tamanhos moleculares similares.",
+                char: "[Placeholder] Modelo empírico mais antigo, expansão em série. Boa flexibilidade matemática.",
+                limit: "[Placeholder] Sem base física forte. Não representa bem sistemas complexos ou fortemente não ideais."
+            },
+            vanlaar: {
+                title: "van Laar",
+                color: "var(--c-vanlaar)",
+                eq: "[Placeholder] Inserir equação de van Laar.",
+                mix: "[Placeholder] Sistemas com desvios positivos da idealidade.",
+                char: "[Placeholder] Baseado na equação de van der Waals. Parâmetros com algum significado físico.",
+                limit: "[Placeholder] Falha para moléculas com polaridades muito diferentes ou pontes de hidrogênio."
+            },
+            wilson: {
+                title: "Wilson",
+                color: "var(--c-wilson)",
+                eq: "[Placeholder] Inserir equação de Wilson.",
+                mix: "[Placeholder] Misturas fortemente não ideais, álcoois/água.",
+                char: "[Placeholder] Baseado no conceito de composição local. Excelente para misturas altamente polares.",
+                limit: "[Placeholder] Incapaz de prever separação de fases líquidas (LLE)."
+            },
+            nrtl: {
+                title: "NRTL",
+                color: "var(--c-nrtl)",
+                eq: "[Placeholder] Inserir equação NRTL.",
+                mix: "[Placeholder] Sistemas aquosos, orgânicos e separação de fases (VLE e LLE).",
+                char: "[Placeholder] Non-Random Two-Liquid. Usa composição local e adiciona parâmetro de não-aleatoriedade.",
+                limit: "[Placeholder] Requer três parâmetros por par binário, o que aumenta a complexidade."
+            },
+            uniquac: {
+                title: "UNIQUAC",
+                color: "var(--c-uniquac)",
+                eq: "[Placeholder] Inserir equação UNIQUAC.",
+                mix: "[Placeholder] Soluções de polímeros e misturas com moléculas de tamanhos muito diferentes.",
+                char: "[Placeholder] Divide gE em partes combinatória (tamanho/forma) e residual (interações).",
+                limit: "[Placeholder] Complexidade matemática alta. Requer parâmetros puros de volume e área (r e q)."
+            },
+            unifac: {
+                title: "UNIFAC",
+                color: "var(--c-unifac)",
+                eq: "[Placeholder] Inserir equação UNIFAC.",
+                mix: "[Placeholder] Previsão de misturas onde não há dados experimentais disponíveis.",
+                char: "[Placeholder] Modelo de contribuição de grupos. Trata a mistura como solução de grupos funcionais.",
+                limit: "[Placeholder] Previsões podem ser imprecisas para moléculas muito complexas ou isômeros próximos."
+            }
+        };
+
+        // Posicionamento Matemático dos Nós
+        function positionNodes() {
+            const nodes = document.querySelectorAll('.node');
+            const orbit = document.querySelector('.orbit');
+            
+            // Define o raio dependendo do tamanho da tela
+            const radius = window.innerWidth < 768 ? 130 : 260;
+            
+            // Ajusta o tamanho do círculo tracejado
+            orbit.style.width = `${radius * 2}px`;
+            orbit.style.height = `${radius * 2}px`;
+
+            nodes.forEach((node, index) => {
+                // Calcula o ângulo para cada nó (distribuição igualitária em 360 graus)
+                // -Math.PI / 2 faz o primeiro nó iniciar exatamente no topo (12 horas)
+                const angle = (index / nodes.length) * (2 * Math.PI) - (Math.PI / 2);
+                
+                // Coordenadas trigonométricas
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                
+                // Posiciona usando left e top a partir do centro, e corrige com translate
+                node.style.left = `calc(50% + ${x}px)`;
+                node.style.top = `calc(50% + ${y}px)`;
+                node.style.transform = 'translate(-50%, -50%)';
+            });
+        }
+
+        // Funções do Painel Lateral
+        function openPanel(modelId) {
+            const data = modelsData[modelId];
+            
+            // Atualiza os conteúdos
+            document.getElementById('p-title').innerText = data.title;
+            document.getElementById('p-title').style.color = data.color;
+            document.documentElement.style.setProperty('--model-color', data.color);
+            
+            document.getElementById('p-eq').innerHTML = data.eq;
+            document.getElementById('p-mix').innerHTML = data.mix;
+            document.getElementById('p-char').innerHTML = data.char;
+            document.getElementById('p-limit').innerHTML = data.limit;
+
+            // Abre o painel
+            document.getElementById('infoPanel').classList.add('active');
+        }
+
+        function closePanel() {
+            document.getElementById('infoPanel').classList.remove('active');
+        }
+
+        // Reposiciona os nós ao carregar e ao redimensionar a janela
+        window.addEventListener('load', positionNodes);
+        window.addEventListener('resize', positionNodes);
+    </script>
+</body>
+</html>
