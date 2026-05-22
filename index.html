@@ -6,7 +6,7 @@
 <title>Modelos baseados em gᴱ · Termodinâmica II</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream:    #faf7f2;
@@ -72,9 +72,9 @@
   }
 
   .header-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 300;
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-family: 'Amiri', 'Atteron', serif;
+    font-weight: 400;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
     line-height: 1.15;
     color: var(--ink);
     letter-spacing: -0.01em;
@@ -82,15 +82,15 @@
 
   .header-title em {
     font-style: italic;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .header-sub {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     color: var(--ink-soft);
     margin-top: 0.5rem;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .header-rule {
@@ -137,13 +137,13 @@
 
   .node-label {
     font-family: 'DM Sans', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     fill: white;
     text-anchor: middle;
     dominant-baseline: central;
     pointer-events: none;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
   }
 
   .center-circle {
@@ -152,8 +152,8 @@
   }
 
   .center-label-1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 14px;
+    font-family: 'Amiri', 'Atteron', serif;
+    font-size: 16px;
     font-weight: 400;
     font-style: italic;
     fill: var(--cream);
@@ -184,8 +184,8 @@
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(45,38,32,0.22);
-    backdrop-filter: blur(3px);
+    background: rgba(45,38,32,0.35);
+    backdrop-filter: blur(4px);
     z-index: 100;
     animation: fadeIn 0.2s ease;
   }
@@ -199,7 +199,7 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(460px, 100vw);
+    width: min(520px, 100vw);
     background: var(--cream);
     z-index: 101;
     overflow-y: auto;
@@ -213,44 +213,45 @@
   #detail-panel.open { transform: translateX(0); }
 
   .panel-header {
-    padding: 2.2rem 2rem 1.2rem;
+    padding: 2.2rem 2.5rem 1.2rem;
     border-bottom: 1px solid var(--line);
     position: relative;
   }
 
   .panel-tag {
-    font-size: 0.65rem;
-    font-weight: 400;
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink-soft);
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.4rem;
   }
 
   .panel-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 400;
+    font-family: 'Amiri', 'Atteron', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
     line-height: 1.1;
     color: var(--ink);
   }
 
   .panel-pill {
     display: inline-block;
-    font-size: 0.65rem;
-    padding: 3px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    padding: 4px 12px;
     border-radius: 20px;
-    margin-top: 0.6rem;
-    font-weight: 400;
-    letter-spacing: 0.08em;
+    margin-top: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
   }
 
   #close-btn {
     position: absolute;
     top: 1.5rem;
     right: 1.5rem;
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--line);
     background: transparent;
     border-radius: 50%;
@@ -264,14 +265,14 @@
   }
   #close-btn:hover { background: var(--cream2); color: var(--ink); }
 
-  .panel-body { padding: 1.6rem 2rem 2.5rem; }
+  .panel-body { padding: 1.6rem 2.5rem 2.5rem; }
 
   /* Tab navigation */
   .tab-nav {
     display: flex;
     gap: 0;
     border-bottom: 1px solid var(--line);
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.8rem;
     overflow-x: auto;
     scrollbar-width: none;
   }
@@ -279,10 +280,10 @@
 
   .tab-btn {
     flex-shrink: 0;
-    padding: 0.55rem 1rem;
+    padding: 0.6rem 1.2rem;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.72rem;
-    font-weight: 400;
+    font-size: 0.75rem;
+    font-weight: 500;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--ink-soft);
@@ -297,7 +298,7 @@
   .tab-btn.active {
     color: var(--ink);
     border-bottom-color: var(--accent);
-    font-weight: 500;
+    font-weight: 700;
   }
 
   .tab-content { display: none; }
@@ -310,56 +311,65 @@
 
   /* Content typography */
   .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.18em;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--ink-soft);
     margin-bottom: 0.5rem;
-    font-weight: 400;
   }
 
+  /* Melhoria drástica nas equações: fonte maior, fonte serifada clássica */
   .eq-block {
     background: var(--cream2);
-    border-left: 2px solid var(--accent);
+    border-left: 3px solid var(--accent);
     border-radius: 0 6px 6px 0;
-    padding: 0.7rem 1rem;
-    margin: 0.5rem 0 1rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.05rem;
+    padding: 1rem 1.2rem;
+    margin: 0.5rem 0 1.5rem;
+    font-family: 'Amiri', 'Atteron', serif;
+    font-size: 1.35rem; /* Aumentado para leitura confortável */
     line-height: 1.6;
     color: var(--ink);
+    overflow-x: auto; /* Evita que a equação quebre o layout se for longa */
   }
 
   .eq-block sub, .eq-block sup {
-    font-size: 0.72em;
-    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7em;
+  }
+
+  .eq-block i {
+    font-family: 'Amiri', 'Atteron', serif;
+    font-style: italic;
   }
 
   .content-text {
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.85rem;
-    line-height: 1.75;
-    color: var(--ink-soft);
+    font-size: 0.95rem; /* Leitura mais agradável */
+    line-height: 1.7;
+    color: var(--ink);
   }
 
   .content-text ul {
-    padding-left: 1.1rem;
-    margin-top: 0.4rem;
+    padding-left: 1.2rem;
+    margin-top: 0.5rem;
   }
 
   .content-text li {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.8rem; /* Respiro entre os pontos */
   }
 
   .content-text li::marker {
     color: var(--accent);
-    font-size: 0.85em;
+    font-size: 0.9em;
   }
 
   .ref-note {
-    font-size: 0.72rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem;
     color: var(--ink-soft);
-    margin-top: 0.3rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem;
     font-style: italic;
   }
 
@@ -374,7 +384,7 @@
   }
 
   .footer-refs {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     color: var(--ink-soft);
     line-height: 1.7;
     max-width: 600px;
@@ -387,20 +397,20 @@
   }
 
   .footer-sig {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.85rem;
+    font-family: 'Amiri', 'Atteron', serif;
+    font-size: 1rem;
     font-style: italic;
-    color: var(--line);
+    color: var(--ink-soft);
     margin-top: 1.2rem;
   }
 
   /* ── Mobile ── */
   @media (max-width: 600px) {
     #map-section { aspect-ratio: auto; min-height: 70vw; padding-bottom: 1rem; }
-    .panel-title { font-size: 1.5rem; }
-    .panel-body { padding: 1.2rem 1.4rem 2rem; }
-    .panel-header { padding: 1.6rem 1.4rem 1rem; }
-    .eq-block { font-size: 0.95rem; }
+    .panel-title { font-size: 2rem; }
+    .panel-body { padding: 1.5rem 1.5rem 2rem; }
+    .panel-header { padding: 1.8rem 1.5rem 1rem; }
+    .eq-block { font-size: 1.15rem; }
   }
 </style>
 </head>
@@ -422,58 +432,42 @@
       </filter>
     </defs>
 
-    <!-- Outer decorative ring -->
     <circle cx="250" cy="230" r="155" fill="none" stroke="#d4c5b5" stroke-width="0.5" stroke-dasharray="2 6" opacity="0.6"/>
     <circle cx="250" cy="230" r="170" fill="none" stroke="#d4c5b5" stroke-width="0.3" stroke-dasharray="1 10" opacity="0.4"/>
 
-    <!-- Spokes (drawn first, behind nodes) -->
-    <!-- Margules: top-left ~330° -->
     <line class="spoke" id="spoke-margules"  x1="250" y1="155" x2="174" y2="97"/>
-    <!-- van Laar: top-right ~30° -->
     <line class="spoke" id="spoke-vanlaar"   x1="250" y1="155" x2="326" y2="97"/>
-    <!-- Wilson: right ~90° -->
     <line class="spoke" id="spoke-wilson"    x1="250" y1="230" x2="405" y2="230"/>
-    <!-- NRTL: bottom-right ~150° -->
     <line class="spoke" id="spoke-nrtl"      x1="250" y1="305" x2="326" y2="363"/>
-    <!-- UNIQUAC: bottom-left ~210° -->
     <line class="spoke" id="spoke-uniquac"   x1="250" y1="305" x2="174" y2="363"/>
-    <!-- UNIFAC: left ~270° -->
     <line class="spoke" id="spoke-unifac"    x1="250" y1="230" x2="95"  y2="230"/>
 
-    <!-- Center node -->
     <circle class="center-circle" cx="250" cy="230" r="68"/>
     <text class="center-label-1" x="250" y="218">modelos</text>
     <text class="center-label-2" x="250" y="233">baseados em</text>
     <text class="center-label-1" x="250" y="248">g ᴱ</text>
 
-    <!-- Model nodes -->
-    <!-- Margules top-left -->
     <g class="node-group" data-model="margules" transform="translate(152,75)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#c9a0a0"/>
       <text class="node-label" x="0" y="0">Margules</text>
     </g>
-    <!-- van Laar top-right -->
     <g class="node-group" data-model="vanlaar" transform="translate(348,75)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#a0b8c9"/>
       <text class="node-label" x="0" y="-6">van</text>
       <text class="node-label" x="0" y="8">Laar</text>
     </g>
-    <!-- Wilson right -->
     <g class="node-group" data-model="wilson" transform="translate(418,230)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#a0c9b0"/>
       <text class="node-label" x="0" y="0">Wilson</text>
     </g>
-    <!-- NRTL bottom-right -->
     <g class="node-group" data-model="nrtl" transform="translate(348,385)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#c9b8a0"/>
       <text class="node-label" x="0" y="0">NRTL</text>
     </g>
-    <!-- UNIQUAC bottom-left -->
     <g class="node-group" data-model="uniquac" transform="translate(152,385)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#b8a0c9"/>
       <text class="node-label" x="0" y="0">UNIQUAC</text>
     </g>
-    <!-- UNIFAC left -->
     <g class="node-group" data-model="unifac" transform="translate(82,230)">
       <circle class="node-circle" cx="0" cy="0" r="46" fill="#c9c0a0"/>
       <text class="node-label" x="0" y="0">UNIFAC</text>
@@ -481,10 +475,8 @@
   </svg>
 </section>
 
-<!-- Backdrop -->
 <div id="panel-backdrop"></div>
 
-<!-- Detail panel -->
 <div id="detail-panel" role="dialog" aria-modal="true" aria-label="Detalhes do modelo">
   <div class="panel-header">
     <p class="panel-tag">Modelo termodinâmico</p>
@@ -505,48 +497,45 @@
     Prausnitz, J. M.; Lichtenthaler, R. N.; Azevedo, E. G. <em>Molecular Thermodynamics of Fluid-Phase Equilibria</em>, 3ª ed., Prentice Hall, 1999. &nbsp;·&nbsp;
     Smith, J. M.; Van Ness, H. C.; Abbott, M. M. <em>Introduction to Chemical Engineering Thermodynamics</em>, 8ª ed., McGraw-Hill, 2018.
   </div>
-  <p class="footer-sig">Taili Lucas 2026</p>
+  <p class="footer-sig">Modelagem Analítica Avançada</p>
 </footer>
 
 <script>
 const MODELS = {
   margules: {
     name: "Margules",
-    pill: "Empírico · 2 parâmetros",
+    pill: "Empírico · Correlativo Clássico",
     color: "#c9a0a0",
     colorDark: "#8c5e5e",
     tabs: {
       "Equações": `
-        <p class="section-label">g<sup>E</sup>/RT</p>
+        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
         <div class="eq-block">
-          g<sup>E</sup>/RT = x<sub>1</sub>x<sub>2</sub>(A<sub>21</sub>x<sub>1</sub> + A<sub>12</sub>x<sub>2</sub>)
+          <i>g</i><sup>E</sup> / <i>RT</i> = <i>x</i><sub>1</sub><i>x</i><sub>2</sub> (<i>A</i><sub>21</sub><i>x</i><sub>1</sub> + <i>A</i><sub>12</sub><i>x</i><sub>2</sub>)
         </div>
-        <p class="section-label">ln γ<sub>i</sub></p>
+        <p class="section-label">Coeficientes de Atividade (ln γᵢ)</p>
         <div class="eq-block">
-          ln γ<sub>1</sub> = x<sub>2</sub><sup>2</sup>[A<sub>12</sub> + 2(A<sub>21</sub> − A<sub>12</sub>)x<sub>1</sub>]<br>
-          ln γ<sub>2</sub> = x<sub>1</sub><sup>2</sup>[A<sub>21</sub> + 2(A<sub>12</sub> − A<sub>21</sub>)x<sub>2</sub>]
+          ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [<i>A</i><sub>12</sub> + 2(<i>A</i><sub>21</sub> − <i>A</i><sub>12</sub>)<i>x</i><sub>1</sub>]<br><br>
+          ln <i>γ</i><sub>2</sub> = <i>x</i><sub>1</sub><sup>2</sup> [<i>A</i><sub>21</sub> + 2(<i>A</i><sub>12</sub> − <i>A</i><sub>21</sub>)<i>x</i><sub>2</sub>]
         </div>
-        <p class="ref-note">Caso simétrico (1 parâmetro): A<sub>12</sub> = A<sub>21</sub> = A</p>`,
+        <p class="ref-note">Caso simétrico (solução estritamente regular): A<sub>12</sub> = A<sub>21</sub> = A</p>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Misturas simples com moléculas de tamanho similar</li>
-          <li>Sistemas com desvios moderados da idealidade</li>
-          <li>Álcoois + hidrocarbonetos simples</li>
-          <li>Útil como ponto de partida antes de modelos mais elaborados</li>
+          <li><strong>Misturas simples:</strong> Adequado para sistemas onde as moléculas possuem tamanhos, formas e naturezas químicas muito semelhantes (ex: benzeno e tolueno, misturas de hidrocarbonetos leves).</li>
+          <li><strong>Interpolações rápidas:</strong> Utilizado na modelagem inicial de dados de Equilíbrio Líquido-Vapor (VLE) quando o sistema apresenta desvios apenas moderados da idealidade.</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Modelo puramente empírico, sem base molecular rigorosa</li>
-          <li>Parâmetros A<sub>12</sub> e A<sub>21</sub> obtidos por regressão de dados experimentais de VLE</li>
-          <li>Truncamento de uma expansão em potências de x</li>
-          <li>Forma simétrica (1 par.) possível quando os componentes são similares</li>
+          <li><strong>Base matemática:</strong> Consiste essencialmente no truncamento de uma expansão em série de potências da fração molar (conhecida como série de Redlich-Kister).</li>
+          <li><strong>Abordagem macroscópica:</strong> É um modelo puramente fenomenológico. Ele trata a mistura de forma global, não levando em consideração o arranjo molecular local ou interações específicas.</li>
+          <li><strong>Parâmetros:</strong> Seus parâmetros (<i>A</i><sub>12</sub> e <i>A</i><sub>21</sub>) são obtidos estritamente por regressão de dados experimentais.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li>Inadequado para moléculas de tamanhos muito diferentes</li>
-          <li>Não representa bem sistemas com forte ligação de hidrogênio</li>
-          <li>Incapaz de prever separação de fases líquido-líquido (LLE)</li>
-          <li>Sem capacidade preditiva — puramente correlativo</li>
+          <li>Totalmente inadequado para prever o comportamento de misturas complexas ou fortemente associativas (ex: sistemas com ponte de hidrogênio como água e álcoois).</li>
+          <li>Falha severamente para moléculas assimétricas (com tamanhos muito discrepantes).</li>
+          <li>Não possui embasamento físico rigoroso que permita extrapolações seguras de temperatura.</li>
+          <li>Incapaz de prever Equilíbrio Líquido-Líquido (LLE) de forma confiável.</li>
         </ul></div>`
     }
   },
@@ -557,192 +546,171 @@ const MODELS = {
     colorDark: "#4a7a8c",
     tabs: {
       "Equações": `
-        <p class="section-label">g<sup>E</sup>/RT</p>
+        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
         <div class="eq-block">
-          g<sup>E</sup>/RT = A'B'x<sub>1</sub>x<sub>2</sub> / (A'x<sub>1</sub> + B'x<sub>2</sub>)
+          <i>g</i><sup>E</sup> / <i>RT</i> = (<i>A</i><sub>12</sub><i>A</i><sub>21</sub><i>x</i><sub>1</sub><i>x</i><sub>2</sub>) / (<i>A</i><sub>12</sub><i>x</i><sub>1</sub> + <i>A</i><sub>21</sub><i>x</i><sub>2</sub>)
         </div>
-        <p class="section-label">ln γ<sub>i</sub></p>
+        <p class="section-label">Coeficientes de Atividade (ln γᵢ)</p>
         <div class="eq-block">
-          ln γ<sub>1</sub> = A' / [1 + (A'x<sub>1</sub>)/(B'x<sub>2</sub>)]<sup>2</sup><br>
-          ln γ<sub>2</sub> = B' / [1 + (B'x<sub>2</sub>)/(A'x<sub>1</sub>)]<sup>2</sup>
+          ln <i>γ</i><sub>1</sub> = <i>A</i><sub>12</sub> / [1 + (<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)/(<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)]<sup>2</sup><br><br>
+          ln <i>γ</i><sub>2</sub> = <i>A</i><sub>21</sub> / [1 + (<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)]<sup>2</sup>
         </div>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Sistemas com pressões de vapor muito diferentes entre os componentes</li>
-          <li>Misturas levemente assimétricas</li>
-          <li>Sistemas não-polares ou levemente polares</li>
-          <li>Alternativa ao Margules quando há assimetria na mistura</li>
+          <li><strong>Desvios positivos:</strong> Funciona muito bem para sistemas que apresentam desvios positivos consistentes da Lei de Raoult.</li>
+          <li><strong>Assimetria de volatilidade:</strong> Uma excelente escolha quando as pressões de vapor dos componentes puros são muito diferentes.</li>
+          <li>Cálculos analíticos rápidos na determinação de azeótropos binários devido à simplicidade algébrica de sua forma racional.</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Derivado da equação de estado de van der Waals</li>
-          <li>Considera diferenças de volume molar entre os componentes</li>
-          <li>2 parâmetros empíricos (A' e B') ajustados por dados de VLE</li>
-          <li>Forma racional em x, mais flexível que o Margules</li>
+          <li><strong>Origem física:</strong> É historicamente derivado da equação de estado de van der Waals para misturas.</li>
+          <li><strong>Frações volumétricas:</strong> Acomoda diferenças de tamanho molecular introduzindo o conceito empírico de "fração volumétrica efetiva", guiada pelas constantes da equação.</li>
+          <li>Mais flexível que o modelo de Margules para capturar assimetrias na curva de equilíbrio.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li>Não prevê máximos nem mínimos em ln γ vs. x</li>
-          <li>Falha em misturas altamente polares ou com forte ligação H</li>
-          <li>Parâmetros sem significado físico direto e rigoroso</li>
-          <li>Puramente correlativo, sem capacidade preditiva</li>
+          <li><strong>Mistura aleatória:</strong> Parte da premissa de que a entropia de mistura é idêntica à de uma mistura ideal, o que é fisicamente falso para fluidos altamente polares.</li>
+          <li>Incapaz de representar matematicamente sistemas que apresentam máximos ou mínimos na curva de ln <i>γ</i> versus composição (comum em sistemas halogenados).</li>
+          <li>É muito difícil expandir o modelo com precisão para sistemas multicomponentes (ternários ou maiores) sem gerar inconsistências termodinâmicas.</li>
         </ul></div>`
     }
   },
   wilson: {
     name: "Wilson",
-    pill: "Composição local · 2 parâmetros",
+    pill: "Composição Local · VLE Forte",
     color: "#a0c9b0",
     colorDark: "#3d7a5a",
     tabs: {
       "Equações": `
-        <p class="section-label">g<sup>E</sup>/RT</p>
+        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
         <div class="eq-block">
-          g<sup>E</sup>/RT = −Σ<sub>i</sub> x<sub>i</sub> ln(Σ<sub>j</sub> x<sub>j</sub>Λ<sub>ij</sub>)
+          <i>g</i><sup>E</sup> / <i>RT</i> = −Σ <i>x</i><sub>i</sub> ln(Σ <i>x</i><sub>j</sub>Λ<sub>ij</sub>)
         </div>
-        <p class="section-label">ln γ<sub>i</sub> (sistema binário)</p>
+        <p class="section-label">Coeficiente de Atividade (Sistema Binário)</p>
         <div class="eq-block">
-          ln γ<sub>1</sub> = −ln(x<sub>1</sub>+Λ<sub>12</sub>x<sub>2</sub>) + x<sub>2</sub>[Λ<sub>12</sub>/(x<sub>1</sub>+Λ<sub>12</sub>x<sub>2</sub>) − Λ<sub>21</sub>/(x<sub>2</sub>+Λ<sub>21</sub>x<sub>1</sub>)]
+          ln <i>γ</i><sub>1</sub> = −ln(<i>x</i><sub>1</sub> + Λ<sub>12</sub><i>x</i><sub>2</sub>) + <i>x</i><sub>2</sub> [ (Λ<sub>12</sub>) / (<i>x</i><sub>1</sub> + Λ<sub>12</sub><i>x</i><sub>2</sub>) − (Λ<sub>21</sub>) / (<i>x</i><sub>2</sub> + Λ<sub>21</sub><i>x</i><sub>1</sub>) ]
         </div>
-        <p class="ref-note">Λ<sub>12</sub> = (V<sub>2</sub><sup>L</sup>/V<sub>1</sub><sup>L</sup>) exp[−(λ<sub>12</sub>−λ<sub>11</sub>)/RT]</p>`,
+        <p class="ref-note">Parâmetro: Λ<sub>ij</sub> = (<i>V</i><sub>j</sub> / <i>V</i><sub>i</sub>) exp[−(<i>λ</i><sub>ij</sub> − <i>λ</i><sub>ii</sub>)/<i>RT</i>]</p>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Misturas polares completamente miscíveis</li>
-          <li>Sistemas álcool–água e álcool–hidrocarboneto</li>
-          <li>Sistemas com ligações de hidrogênio (HB)</li>
-          <li>Excelente para VLE de sistemas miscíveis em toda a faixa de x</li>
+          <li><strong>Padrão-ouro para misturas não ideais:</strong> Excepcional para soluções de compostos polares e fortemente associativos (álcoois, cetonas, aminas com água).</li>
+          <li>Extensivamente utilizado na simulação e design de colunas de destilação para prever a formação de azeótropos em fluidos perfeitamente miscíveis.</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Primeiro modelo baseado no conceito de <em>composição local</em></li>
-          <li>Parâmetros com significado físico: diferenças de energia de interação λ<sub>ij</sub></li>
-          <li>Incorpora diferenças de volume molar líquido V<sup>L</sup></li>
-          <li>Miscibilidade completa garantida por construção matemática</li>
+          <li><strong>Composição Local:</strong> Marco histórico (1964) que quebrou o paradigma da mistura aleatória. Assume que a concentração de moléculas 'A' ao redor de uma molécula 'B' é diferente da concentração global devido às forças intermoleculares.</li>
+          <li>Os parâmetros energéticos (<i>λ</i><sub>ij</sub>) possuem real significado físico, representando a energia de interação cruzada.</li>
+          <li>Sua dependência explícita da temperatura (<i>T</i>) permite extrapolações isotérmicas e isobáricas com extrema segurança e precisão.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li><strong>Não pode prever separação de fases líquido-líquido (LLE)</strong> — limitação fundamental</li>
-          <li>Restrito a sistemas completamente miscíveis</li>
-          <li>Não se aplica diretamente a sólidos ou polímeros</li>
-          <li>Requer dados experimentais para os 2 parâmetros binários por par</li>
+          <li><strong>Falha crítica em LLE:</strong> Tem a incapacidade matemática absoluta de prever separação de fases líquido-líquido. A função de energia livre gerada pela equação de Wilson é sempre estritamente convexa.</li>
+          <li>Devido à limitação acima, não pode ser aplicado em processos de extração líquido-líquido ou decantação de sistemas parcialmente miscíveis.</li>
         </ul></div>`
     }
   },
   nrtl: {
     name: "NRTL",
-    pill: "Composição local · 3 parâmetros",
+    pill: "Versátil · VLE & LLE (3 parâmetros)",
     color: "#c9b8a0",
     colorDark: "#8c7050",
     tabs: {
       "Equações": `
-        <p class="section-label">g<sup>E</sup>/RT</p>
+        <p class="section-label">Energia de Gibbs em Excesso (gᴱ/RT)</p>
         <div class="eq-block">
-          g<sup>E</sup>/RT = Σ<sub>i</sub> x<sub>i</sub> [Σ<sub>j</sub>τ<sub>ji</sub>G<sub>ji</sub>x<sub>j</sub> / Σ<sub>k</sub>G<sub>ki</sub>x<sub>k</sub>]
+          <i>g</i><sup>E</sup> / <i>RT</i> = Σ <i>x</i><sub>i</sub> [ (Σ <i>τ</i><sub>ji</sub><i>G</i><sub>ji</sub><i>x</i><sub>j</sub>) / (Σ <i>G</i><sub>ki</sub><i>x</i><sub>k</sub>) ]
         </div>
-        <p class="section-label">ln γ<sub>i</sub></p>
+        <p class="section-label">Coeficiente de Atividade (ln γ₁ binário)</p>
         <div class="eq-block">
-          ln γ<sub>1</sub> = x<sub>2</sub><sup>2</sup>[τ<sub>21</sub>(G<sub>21</sub>/(x<sub>1</sub>+G<sub>21</sub>x<sub>2</sub>))<sup>2</sup> + τ<sub>12</sub>G<sub>12</sub>/(x<sub>2</sub>+G<sub>12</sub>x<sub>1</sub>)<sup>2</sup>]
+          ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [ <i>τ</i><sub>21</sub>( <i>G</i><sub>21</sub> / (<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub><i>G</i><sub>21</sub>) )<sup>2</sup> + (<i>τ</i><sub>12</sub><i>G</i><sub>12</sub>) / (<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub><i>G</i><sub>12</sub>)<sup>2</sup> ]
         </div>
-        <p class="ref-note">G<sub>ij</sub> = exp(−ατ<sub>ij</sub>) &nbsp;·&nbsp; τ<sub>ij</sub> = (g<sub>ij</sub>−g<sub>jj</sub>)/RT</p>`,
+        <p class="ref-note">Onde: <i>G</i><sub>ij</sub> = exp(−<i>α</i><sub>ij</sub><i>τ</i><sub>ij</sub>)  e  <i>τ</i><sub>ij</sub> = (<i>g</i><sub>ij</sub>−<i>g</i><sub>jj</sub>)/<i>RT</i></p>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Misturas polares e não-polares</li>
-          <li>Sistemas com separação de fases (LLE) — extração líquido-líquido</li>
-          <li>Sistemas de eletrólitos (versões estendidas: eNRTL)</li>
-          <li>Adequado para VLE e LLE simultaneamente</li>
+          <li><strong>Universal:</strong> Modelo de escolha primária na indústria para processos complexos de separação, incluindo destilação extrativa e extração líquido-líquido.</li>
+          <li>Suporta a modelagem simultânea de VLE (Vapor-Líquido) e LLE (Líquido-Líquido), essencial para misturas que formam múltiplas fases aquosas e orgânicas.</li>
+          <li>Possui extensões modernas (eNRTL) amplamente usadas na simulação de soluções eletrolíticas.</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Extensão do modelo Wilson com parâmetro de não-aleatoriedade α</li>
-          <li>α tipicamente entre 0,2 e 0,47 (frequentemente fixado em 0,3)</li>
-          <li>Conceito de composição local com correção para arranjos não-aleatórios</li>
-          <li>Mais versátil que o Wilson: prevê tanto VLE quanto LLE</li>
+          <li><strong>Non-Random Two-Liquid:</strong> Desenvolvido por Renon e Prausnitz (1968), expande a teoria de composição local de Wilson adicionando o conceito formal de teoria de dois líquidos.</li>
+          <li>Introduz o parâmetro crucial de <strong>não-aleatoriedade</strong> (<i>α</i><sub>ij</sub>), que pondera o quão ordenada é a distribuição das moléculas na mistura.</li>
+          <li>A estrutura de sua equação permite a formação de regiões de concavidade na curva de energia, resolvendo a limitação de LLE do modelo de Wilson.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li>3 parâmetros por par binário → mais dados experimentais necessários</li>
-          <li>Parâmetro α difícil de determinar; frequentemente fixado empiricamente</li>
-          <li>Não se aplica diretamente a polímeros</li>
-          <li>Correlativo — sem capacidade preditiva sem dados do par específico</li>
+          <li>Exige 3 parâmetros regressivos por par binário (<i>τ</i><sub>ij</sub>, <i>τ</i><sub>ji</sub> e <i>α</i><sub>ij</sub>), necessitando de uma base de dados experimentais mais rica e maior cuidado na regressão estatística.</li>
+          <li>O parâmetro <i>α</i> muitas vezes é fixado arbitrariamente (frequentemente em 0.3) pelos engenheiros para evitar instabilidade algorítmica e múltiplos mínimos locais durante a otimização em simuladores.</li>
         </ul></div>`
     }
   },
   uniquac: {
     name: "UNIQUAC",
-    pill: "Quase-reticular · 2 parâmetros",
+    pill: "Quase-reticular · Tamanho e Forma",
     color: "#b8a0c9",
     colorDark: "#6b4a8c",
     tabs: {
       "Equações": `
-        <p class="section-label">g<sup>E</sup>/RT (duas contribuições)</p>
+        <p class="section-label">Estrutura Modular de gᴱ</p>
         <div class="eq-block">
-          g<sup>E</sup>/RT = g<sup>E</sup><sub>comb</sub>/RT + g<sup>E</sup><sub>res</sub>/RT
+          <i>g</i><sup>E</sup> / <i>RT</i> = (<i>g</i><sup>E</sup> / <i>RT</i>)<sub>combinação</sub> + (<i>g</i><sup>E</sup> / <i>RT</i>)<sub>residual</sub>
         </div>
-        <p class="section-label">ln γ<sub>i</sub></p>
+        <p class="section-label">Coeficiente de Atividade (ln γᵢ)</p>
         <div class="eq-block">
-          ln γ<sub>i</sub> = ln γ<sub>i</sub><sup>C</sup> + ln γ<sub>i</sub><sup>R</sup>
+          ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup>
         </div>
-        <p class="ref-note">τ<sub>ij</sub> = exp[−(u<sub>ij</sub>−u<sub>jj</sub>)/RT] &nbsp;·&nbsp; parâmetros estruturais r, q de tabelas</p>`,
+        <p class="ref-note">Requer parâmetros puramente estruturais tabelados (<i>r</i> de volume e <i>q</i> de área) para a parte combinatória.</p>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Moléculas de tamanhos e formas muito diferentes</li>
-          <li>Sistemas contendo polímeros</li>
-          <li>Misturas polares e não-polares</li>
-          <li>VLE e LLE (mais versátil que Wilson)</li>
+          <li><strong>Disparidade de tamanho:</strong> Excelente para simular soluções contendo grandes moléculas (como polímeros ou proteínas) misturadas com solventes orgânicos comuns.</li>
+          <li>Usado de forma robusta em simuladores comerciais (HYSYS, Aspen Plus) para predizer equilíbrios de fase complexos, abrangendo VLE, LLE e Equilíbrio Sólido-Líquido (SLE).</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Baseado na teoria quase-reticular de Guggenheim</li>
-          <li>Parte <em>combinatorial</em>: efeito de tamanho/forma (parâmetros r e q estruturais)</li>
-          <li>Parte <em>residual</em>: contribuição energética (parâmetros τ<sub>ij</sub> ajustados)</li>
-          <li>Parâmetros r e q independentes de temperatura, obtidos em tabelas</li>
+          <li><strong>Universal Quasi-Chemical:</strong> Abrams e Prausnitz (1975) revolucionaram ao dividir a modelagem em duas frentes físicas distintas.</li>
+          <li><strong>Parte Combinatória:</strong> Contabiliza as diferenças entrópicas puramente baseadas no tamanho (<i>r</i>) e área superficial (<i>q</i>) das moléculas, utilizando constantes já tabeladas por métodos geométricos (contribuição de van der Waals).</li>
+          <li><strong>Parte Residual:</strong> Captura as forças energéticas intermoleculares (entalpia), dependendo apenas de 2 parâmetros binários (<i>τ</i><sub>ij</sub>) que precisam ser ajustados.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li>Requer parâmetros estruturais r e q para cada espécie</li>
-          <li>Ainda depende de 2 parâmetros energéticos binários por par</li>
-          <li>Menos preciso que NRTL para sistemas altamente polares</li>
-          <li>Parte residual continua sendo correlativa</li>
+          <li>A formulação matemática é extensa e computacionalmente densa, podendo gerar maior tempo de convergência em simulações robustas.</li>
+          <li>Apesar do rigor físico, para sistemas compostos apenas por moléculas pequenas e altamente polares (como água e metanol), a hipótese de rede rígida (quase-reticular) faz o modelo performar marginalmente pior que o NRTL no ajuste experimental.</li>
         </ul></div>`
     }
   },
   unifac: {
     name: "UNIFAC",
-    pill: "Contribuição de grupos · Preditivo",
+    pill: "Contribuição de Grupos · Preditivo",
     color: "#c9c0a0",
     colorDark: "#7a6e3d",
     tabs: {
       "Equações": `
-        <p class="section-label">ln γ<sub>i</sub> (mesma estrutura do UNIQUAC)</p>
+        <p class="section-label">Equação análoga ao UNIQUAC</p>
         <div class="eq-block">
-          ln γ<sub>i</sub> = ln γ<sub>i</sub><sup>C</sup> + ln γ<sub>i</sub><sup>R</sup>
+          ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup>
         </div>
-        <p class="section-label">Contribuição residual por grupos</p>
+        <p class="section-label">Cálculo Residual por Grupos</p>
         <div class="eq-block">
-          ln γ<sub>i</sub><sup>R</sup> = Σ<sub>k</sub> ν<sub>k</sub><sup>(i)</sup> [ln Γ<sub>k</sub> − ln Γ<sub>k</sub><sup>(i)</sup>]
+          ln <i>γ</i><sub>i</sub><sup>R</sup> = Σ <i>ν</i><sub>k</sub><sup>(i)</sup> [ ln Γ<sub>k</sub> − ln Γ<sub>k</sub><sup>(i)</sup> ]
         </div>
-        <p class="ref-note">Parâmetros de interação por par de grupos funcionais (tabelas UNIFAC)</p>`,
+        <p class="ref-note">Onde Γ<sub>k</sub> é o coeficiente de atividade do <i>grupo funcional k</i> na mistura, avaliado por tabelas unificadas do consórcio UNIFAC.</p>`,
       "Aplicação": `
         <div class="content-text"><ul>
-          <li>Sistemas onde dados experimentais são escassos ou inexistentes</li>
-          <li>Triagem rápida de solventes em projeto de processos</li>
-          <li>Grande variedade de sistemas orgânicos</li>
-          <li>VLE (LLE com versão modificada: mod-UNIFAC)</li>
+          <li><strong>Design preditivo:</strong> Ferramenta vital quando o engenheiro precisa projetar processos para os quais não existem dados termodinâmicos experimentais na literatura.</li>
+          <li>Triagem e seleção rápida de solventes (ex: extração de um princípio ativo farmacêutico) sem necessidade de medições laboratoriais preliminares.</li>
+          <li>Determinação de coeficientes de partição para estudos de impacto ambiental e limites de inflamabilidade de novas misturas orgânicas.</li>
         </ul></div>`,
       "Características": `
         <div class="content-text"><ul>
-          <li>Extensão preditiva do UNIQUAC usando grupos funcionais</li>
-          <li>Parâmetros de interação por par de grupos (tabelas publicadas)</li>
-          <li><strong>Não requer dados experimentais</strong> da mistura específica</li>
-          <li>Hipótese central: grupos funcionais se comportam igualmente em diferentes moléculas</li>
+          <li><strong>Solução de Grupos:</strong> Dá um salto conceitual brilhante: a mistura não é vista como moléculas inteiras interagindo, mas sim como uma "sopa" de blocos básicos (grupos funcionais como -CH3, -OH, -COOH).</li>
+          <li>Permite prever o comportamento de dezenas de milhares de moléculas usando parâmetros de interação tabelados e consolidados mundialmente para algumas centenas de pares de grupos funcionais.</li>
+          <li><strong>Capacidade estritamente preditiva:</strong> Dispensa por completo a regressão de dados experimentais da mistura de interesse.</li>
         </ul></div>`,
       "Limitações": `
         <div class="content-text"><ul>
-          <li>Menos preciso que modelos correlativos quando dados estão disponíveis</li>
-          <li>Hipótese de independência de grupo nem sempre válida</li>
-          <li>Não recomendado próximo ao ponto crítico</li>
-          <li>Limitado aos grupos funcionais presentes nas tabelas publicadas</li>
-          <li>Versões estendidas necessárias para polímeros e eletrólitos</li>
+          <li><strong>Independência estrutural:</strong> A premissa de que um grupo funcional se comporta igualmente independente da molécula falha ao ignorar fortemente os efeitos estéricos (geometria) e a vizinhança intra-molecular. Exemplo clássico: o modelo tem dificuldade extrema em distinguir o comportamento de isômeros (orto, meta e para).</li>
+          <li>A acurácia é inerentemente inferior à de modelos correlativos (como NRTL) que foram calibrados para o sistema exato.</li>
+          <li>Gera previsões ruins para sistemas operando próximos ao ponto crítico termodinâmico.</li>
         </ul></div>`
     }
   }
