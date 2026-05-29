@@ -903,23 +903,34 @@ const MODELS_DETAIL = {
     pill:"Predictive Soave-Redlich-Kwong",
     accent:"#4a5a6a",
     tabs:{
-      "Conceito":`
-        <p class="section-label">SRK + UNIFAC via MHV1</p>
-        <div class="eq-block">CEoS (SRK) + Regra de Mistura (MHV1) + UNIFAC</div>
-        <p class="ref-note">Holderbaum & Gmehling (1991) - estende a validade do UNIFAC para alta pressão e sistemas com gases supercríticos.</p>`,
+      "Conceito e Equações":`
+        <p class="prose">O modelo PSRK (Predictive Soave-Redlich-Kwong) é uma equação de estado de contribuição de grupos baseada na equação de Soave-Redlich-Kwong (SRK). Ele utiliza o método UNIFAC para calcular o parâmetro de mistura <i>a</i>, empregando a regra de mistura de primeira ordem MHV1 (Modified Huron-Vidal) proposta por Michelsen[cite: 92, 93, 125].</p>
+        <p class="section-label">Equação SRK de base</p>
+        <div class="eq-block"><i>P</i> = <i>RT</i>/(<i>v</i>−<i>b</i>) − <i>a</i>/[<i>v</i>(<i>v</i>+<i>b</i>)]</div>
+        <p class="section-label">Dependência da Temperatura (Mathias-Copeman)</p>
+        <p class="prose">Para melhorar a descrição da pressão de vapor de componentes polares, a dependência com a temperatura do parâmetro puro <i>a</i> foi aprimorada utilizando a expressão de Mathias-Copeman (três parâmetros)[cite: 110, 111, 117]:</p>
+        <div class="eq-block"><i>f</i>(<i>T</i>) = [1 + <i>c</i><sub>1</sub>(1−<i>T<sub>r</sub></i><sup>0.5</sup>) + <i>c</i><sub>2</sub>(1−<i>T<sub>r</sub></i><sup>0.5</sup>) + <i>c</i><sub>3</sub>(1−<i>T<sub>r</sub></i><sup>0.5</sup>)]<sup>2</sup></div>
+        <p class="section-label">Regra de Mistura MHV1</p>
+        <div class="eq-block"><i>a</i> = <i>b</i> [ <i>g</i><sub>0</sub><sup>E</sup>/<i>A</i><sub>1</sub> + Σ <i>x</i><sub>i</sub>(<i>a</i><sub>i</sub>/<i>b</i><sub>i</sub>) + (<i>RT</i>/<i>A</i><sub>1</sub>) Σ <i>x</i><sub>i</sub> ln(<i>b</i>/<i>b</i><sub>i</sub>) ]</div>
+        <p class="ref-note">Onde <i>g</i><sub>0</sub><sup>E</sup> é calculado via UNIFAC na pressão zero e A<sub>1</sub> = -0.64663 no PSRK[cite: 121, 135, 138].</p>`,
       "Aplicação":`
+        <p class="prose">O PSRK pode ser usado para previsões de Equilíbrio Líquido-Vapor (VLE) em uma faixa de temperatura e pressão muito maior do que a abordagem original do UNIFAC isolado[cite: 94].</p>
         <ul class="dot-list">
-          <li>Solubilidade de gases leves (H₂, N₂, CO₂, CH₄, O₂) em solventes orgânicos a alta pressão.</li>
-          <li>Sistemas onde não há dados experimentais - caráter preditivo herdado do UNIFAC.</li>
-          <li>Separação de gases em processos de absorção física.</li>
+          <li><strong>Gases supercríticos:</strong> Especialmente desenvolvido para predizer equilíbrios envolvendo gases leves como CH₄, C₂H₆, CO₂, N₂, H₂S, H₂ e CO dissolvidos em compostos orgânicos[cite: 94, 96].</li>
+          <li><strong>Misturas polares e apolares:</strong> Supera a limitação da equação cúbica clássica, permitindo descrever bem o VLE de misturas altamente polares sob pressões elevadas[cite: 103, 118].</li>
+          <li>Predição de equilíbrios de fase multicomponentes utilizando estritamente informações e parâmetros binários[cite: 532, 534].</li>
         </ul>`,
       "Características":`
-        <p class="prose">Combina a robustez da SRK em alta pressão com a capacidade preditiva do UNIFAC via a regra de mistura MHV1 - o melhor dos dois mundos para sistemas com gases supercríticos sem dados disponíveis.</p>`,
+        <ul class="dot-list">
+          <li><strong>Consistência de parâmetros:</strong> Como a regra de mistura utiliza a energia de Gibbs em excesso na <em>pressão zero</em> (g₀ᴱ), o modelo pode utilizar diretamente as tabelas de parâmetros de interação originais do UNIFAC sem precisar recalculá-las (ao contrário de regras referenciadas a pressão infinita)[cite: 121, 122].</li>
+          <li>Atua como um modelo suplementar crucial quando o comportamento real da fase vapor é desconhecido, não negligenciável, ou quando componentes supercríticos estão presentes (cenários onde o modelo UNIFAC tradicional é inadequado)[cite: 136, 137].</li>
+          <li>Sistemas contendo etano, propano e butano puderam ser tratados sem a introdução de novos parâmetros de modelo, pois são divididos em grupos estruturais da mesma forma que os alcanos maiores[cite: 159, 160].</li>
+        </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Herda as limitações do UNIFAC (isômeros, grupos não tabelados).</li>
-          <li>Pode prever falsamente LLE em sistemas totalmente miscíveis.</li>
-          <li>Menos preciso que modelos correlativos ajustados quando dados estão disponíveis.</li>
+          <li><strong>Herança do UNIFAC:</strong> Por depender integralmente do modelo UNIFAC para o cálculo de <i>g</i><sub>0</sub><sup>E</sup>, o PSRK herda suas limitações teóricas — como a dificuldade ou incapacidade de distinguir isômeros (efeitos de vizinhança na molécula)[cite: 122, 138].</li>
+          <li>Sendo baseado no coração da equação cúbica SRK, o cálculo dos volumes molares (densidades) da fase líquida frequentemente apresenta desvios, sendo menos acurado do que modelos focados especificamente em propriedades volumétricas[cite: 91, 98].</li>
+          <li>Não foi projetado para substituir métodos úteis como o UNIFAC padrão em condições de pressões baixas, onde abordagens mais simples são suficientes[cite: 137].</li>
         </ul>`
     }
   },
