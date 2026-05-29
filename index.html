@@ -936,27 +936,33 @@ const MODELS_DETAIL = {
   },
   henry:{
     name:"Lei de Henry", tag:"Gases dissolvidos · Diluição infinita",
-    pill:"Solubilidade de gases · Baixa concentração",
+    pill:"Solubilidade de gases · Alta pressão",
     accent:"#4a5a6a",
     tabs:{
       "Equações":`
-        <p class="section-label">Equilíbrio em diluição infinita</p>
-        <div class="eq-block"><i>y</i><sub>i</sub><i>P</i> = <i>x</i><sub>i</sub> <i>H</i><sub>i,solvente</sub>(T, P)</div>
-        <p class="ref-note">H<sub>i</sub>: constante de Henry do gás i no solvente - fortemente dependente de T e do solvente específico.</p>`,
+        <p class="section-label">Equilíbrio em diluição infinita (Baixa Pressão)</p>
+        <div class="eq-block"><i>y</i><sub>i</sub> <i>P</i> = <i>x</i><sub>i</sub> <i>H</i><sub>i,solvente</sub>(T)</div>
+        <p class="section-label">Forma Estendida (Alta Pressão)</p>
+        <div class="eq-block"><i>y</i><sub>i</sub> <i><span style="font-family: serif;">φ̂</span></i><sub>i</sub> <i>P</i> = <i>x</i><sub>i</sub> <i>H</i><sub>i</sub>(T, P<sub>sat</sub>) exp [ <i>V̄</i><sub>i</sub><sup>∞</sup>(P − P<sub>sat</sub>) / <i>RT</i> ]</div>
+        <p class="ref-note">Onde: <i><span style="font-family: serif;">φ̂</span></i><sub>i</sub> é o coeficiente de fugacidade do gás, e a exponencial representa o Fator de Poynting (efeito da pressão mecânica sobre o líquido).</p>`,
       "Aplicação":`
         <ul class="dot-list">
-          <li>Solubilidade de gases leves (O₂, N₂, CO₂, H₂) em frações molares minúsculas no solvente.</li>
-          <li>Modelagem de absorção física de gases em solventes industriais.</li>
+          <li><strong>Gases Leves:</strong> Excelente para prever a solubilidade de componentes supercríticos (O₂, N₂, CO₂, H₂, CH₄) que operam em frações molares muito pequenas no solvente líquido.</li>
+          <li>Modelagem de processos de absorção física em indústrias petroquímicas e tratamento de gás natural.</li>
           <li>Cálculos de stripping e desgaseificação de líquidos.</li>
         </ul>`,
       "Características":`
-        <p class="prose">A lei de Henry é o equivalente da lei de Raoult para um soluto em <strong>diluição infinita</strong>. H<sub>i</sub> é definida como lim(x<sub>i</sub>→0) P<sub>i</sub>/x<sub>i</sub> - o produto γ<sub>i</sub><sup>∞</sup>·P<sub>i</sub><sup>sat</sup> no limite ideal. É fisicamente motivada: em diluição infinita, o soluto está completamente cercado por moléculas do solvente.</p>`,
+        <p class="prose">A Lei de Henry atua na <strong>convenção assimétrica</strong>. Ela é o equivalente termodinâmico da Lei de Raoult, mas aplicada a um soluto em diluição infinita. A constante <i>H</i><sub>i</sub> representa a fugacidade do gás quando está puramente cercado por moléculas do solvente.</p>
+        <ul class="dot-list">
+          <li>Depende fortemente do par específico gás-solvente e da temperatura.</li>
+          <li>A forma estendida é mandatória em processos industriais reais para corrigir a não-idealidade da fase vapor e a compressão mecânica da fase líquida.</li>
+        </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Válida somente para baixíssimas concentrações de gás - perde validade fora do regime de diluição infinita.</li>
-          <li>Para altas pressões, requer correção adicional com o fator de Poynting e fugacidade da fase vapor.</li>
-          <li>H<sub>i</sub> deve ser determinada experimentalmente para cada par gás-solvente e temperatura.</li>
-        </ul>`
+          <li><strong>Restrição de Concentração:</strong> Válida rigorosamente apenas no regime de diluição infinita (x<sub>i</sub> → 0). Se a concentração do gás dissolvido for significativa, o modelo falha.</li>
+          <li>Exige dados experimentais não só para a constante de Henry (<i>H</i><sub>i</sub>), mas também para o volume molar parcial infinito do gás no solvente (<i>V̄</i><sub>i</sub><sup>∞</sup>) quando operando em alta pressão.</li>
+        </ul>
+        <div class="highlight-box">Para misturas onde os gases leves se dissolvem em concentrações substanciais (alta solubilidade), é obrigatório migrar para abordagens completas como PSRK ou CEoS com regras de mistura avançadas.</div>`
     }
   },
   enrtl_pitzer:{
