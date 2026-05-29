@@ -404,6 +404,24 @@ footer{
   .eq-block{font-size:1.1rem;}
   .question-text{font-size:1.4rem;}
   .model-circle{width:108px;height:108px;font-size:.92rem;}
+  
+  /* Faz as abas quebrarem linha e formarem um grid 2x2 no celular */
+  .tab-nav {
+    flex-wrap: wrap;
+    gap: 8px;
+    border-bottom: none; 
+  }
+  .tab-btn {
+    flex: 1 1 40%; /* Divide o espaço para formar 2 colunas */
+    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    margin-bottom: 0;
+  }
+  .tab-btn.active {
+    background: var(--cream2);
+    border-color: var(--panel-accent, var(--accent));
+  }
 }
 </style>
 </head>
@@ -629,12 +647,12 @@ const MODELS_DETAIL = {
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>Incapaz de prever LLE:</strong> a curvatura suave de x<sub>1</sub>x<sub>2</sub> não gera instabilidade de fase.</li>
+          <li><strong>LLE impreciso:</strong> embora matematicamente possa prever separação de fases, a forma da equação gera curvas binodais irreais. Para LLE, NRTL ou UNIQUAC são indispensáveis.</li>
           <li><strong>Falha em moléculas assimétricas:</strong> volumes molares muito diferentes → erros sistemáticos.</li>
           <li>Inadequado para misturas com ligação de hidrogênio forte.</li>
           <li>Sem capacidade preditiva — sempre requer dados experimentais do par específico.</li>
         </ul>
-        <div class="highlight-box"><strong>Regra prática:</strong> quando |A<sub>12</sub>| ou |A<sub>21</sub>| > 2, o sistema provavelmente exibe separação de fases — prefira NRTL ou UNIQUAC.</div>`
+        <div class="highlight-box"><strong>Regra prática:</strong> quando |A<sub>12</sub>| ou |A<sub>21</sub>| > 2, o sistema exibirá instabilidade e separação de fases.</div>`
     }
   },
   vanlaar:{
