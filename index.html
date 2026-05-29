@@ -34,7 +34,7 @@ body{
   flex-direction:column;
 }
 
-/* botanical bg */
+  
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' opacity='0.042'%3E%3Cg fill='none' stroke='%238c7060' stroke-width='1'%3E%3Cellipse cx='80' cy='120' rx='18' ry='32' transform='rotate(-25 80 120)'/%3E%3Cellipse cx='80' cy='120' rx='10' ry='22' transform='rotate(10 80 120)'/%3E%3Cline x1='80' y1='152' x2='80' y2='200'/%3E%3Cellipse cx='520' cy='80' rx='22' ry='14' transform='rotate(30 520 80)'/%3E%3Cellipse cx='520' cy='80' rx='14' ry='8' transform='rotate(-15 520 80)'/%3E%3Cline x1='520' y1='94' x2='510' y2='140'/%3E%3Cellipse cx='50' cy='480' rx='12' ry='26' transform='rotate(15 50 480)'/%3E%3Cline x1='50' y1='506' x2='45' y2='540'/%3E%3Ccircle cx='300' cy='30' r='4'/%3E%3Ccircle cx='308' cy='24' r='3'/%3E%3Cpath d='M420 560 Q440 540 460 555 Q440 570 420 560Z'/%3E%3C/g%3E%3C/svg%3E");
@@ -405,14 +405,14 @@ footer{
   .question-text{font-size:1.4rem;}
   .model-circle{width:108px;height:108px;font-size:.92rem;}
   
-  /* Faz as abas quebrarem linha e formarem um grid 2x2 no celular */
+  
   .tab-nav {
     flex-wrap: wrap;
     gap: 8px;
     border-bottom: none; 
   }
   .tab-btn {
-    flex: 1 1 40%; /* Divide o espaço para formar 2 colunas */
+    flex: 1 1 40%; 
     text-align: center;
     border: 1px solid var(--line);
     border-radius: 6px;
@@ -442,7 +442,7 @@ footer{
 <div id="detail-panel" role="dialog" aria-modal="true" aria-label="Detalhes do modelo">
   <div class="panel-header">
     <p class="panel-tag" id="panel-tag">Modelo termodinâmico</p>
-    <h2 class="panel-title" id="panel-title">—</h2>
+    <h2 class="panel-title" id="panel-title">-</h2>
     <span class="panel-pill" id="panel-pill"></span>
     <button id="close-btn" aria-label="Fechar painel">✕</button>
   </div>
@@ -470,7 +470,7 @@ const TREE = {
     step: 1, total: 5,
     q: "Qual a polaridade predominante do sistema?",
     topic: "polaridade molecular",
-    hint: `<strong>Substâncias apolares</strong> (ex.: hidrocarbonetos, gases nobres, N₂, CH₄) possuem distribuição simétrica de carga e interagem predominantemente por forças de dispersão de London. <strong>Substâncias polares</strong> (ex.: água, álcoois, cetonas, aminas) têm distribuição assimétrica de carga e formam interações dipolo-dipolo e, em alguns casos, ligações de hidrogênio — forças muito mais intensas que exigem modelos mais sofisticados.`,
+    hint: `<strong>Substâncias apolares</strong> (ex.: hidrocarbonetos, gases nobres, N₂, CH₄) possuem distribuição simétrica de carga e interagem predominantemente por forças de dispersão de London. <strong>Substâncias polares</strong> (ex.: água, álcoois, cetonas, aminas) têm distribuição assimétrica de carga e formam interações dipolo-dipolo e, em alguns casos, ligações de hidrogênio - forças muito mais intensas que exigem modelos mais sofisticados.`,
     options:[
       {label:"Apolar", next:"apolar"},
       {label:"Polar",  next:"eletr"}
@@ -478,19 +478,19 @@ const TREE = {
   },
   apolar:{
     step:2, total:5,
-    q:"Trata-se de substâncias reais e bem definidas?",
-    topic:"pseudocomponentes",
-    hint:`<strong>Substâncias reais</strong> são compostos com identidade química conhecida (ex.: etano, tolueno, CO₂). <strong>Pseudocomponentes</strong> são frações hipotéticas muito utilizadas na indústria do petróleo e petroquímica, definidas por faixas de ponto de ebulição quando a composição química exata da mistura é desconhecida — como cortes de nafta, querosene ou gasóleo. Para essas frações, a ausência de parâmetros moleculares bem definidos exige abordagens especiais.`,
+    q:"São substâncias reais e bem definidas?",
+    topic:"substâncias reais e pseudocomponentes",
+    hint:`<strong>Substâncias reais</strong> são compostos com identidade química conhecida (ex.: etano, tolueno, CO₂). <strong>Pseudocomponentes</strong> são frações hipotéticas muito utilizadas na indústria do petróleo e petroquímica, definidas por faixas de ponto de ebulição quando a composição química exata da mistura é desconhecida - como cortes de nafta, querosene ou gasóleo. Para essas frações, a ausência de parâmetros moleculares bem definidos exige abordagens especiais.`,
     options:[
       {label:"Sim (reais)", next:"apolar_gases"},
-      {label:"Não (pseudos)", next:"end_pseudos"}
+      {label:"Não (pseudo)", next:"end_pseudos"}
     ]
   },
   apolar_gases:{
     step:3, total:5,
-    q:"A mistura contém gases leves supercríticos?",
+    q:"A mistura contém gases leves?",
     topic:"gases leves e supercriticidade",
-    hint:`<strong>Gases leves</strong> como H₂, N₂, O₂, CH₄, CO₂ e Ar estão frequentemente em temperaturas <em>acima</em> de suas temperaturas críticas nos processos industriais. Nessas condições, eles não condensam e existem apenas como fase supercrítica — o conceito de pressão de vapor deixa de ser aplicável e as lei de Raoult e Antoine perdem validade. Isso exige tratamento especial via equações de estado ou lei de Henry.`,
+    hint:`<strong>Gases leves</strong> como H₂, N₂, O₂, CH₄, CO₂ e Ar estão frequentemente em temperaturas <em>acima</em> de suas temperaturas críticas nos processos industriais. Nessas condições, eles não condensam e existem apenas como fase supercrítica - o conceito de pressão de vapor deixa de ser aplicável e as lei de Raoult e Antoine perdem validade. Isso exige tratamento especial via equações de estado ou lei de Henry.`,
     options:[
       {label:"Sim", next:"end_psrk"},
       {label:"Não", next:"end_ceos"}
@@ -510,7 +510,7 @@ const TREE = {
     step:3, total:5,
     q:"O sistema opera em pressão elevada?",
     topic:"regime de pressão",
-    hint:`Em termos práticos de engenharia, pressões onde a fase vapor desvia significativamente do comportamento de gás ideal — geralmente <strong>acima de 10–15 bar</strong>, mas dependendo da substância — exigem o uso de Equações de Estado (CEoS). Isso porque modelos de g<sup>E</sup> diretos assumem, implicitamente, comportamento de gás ideal para a fase vapor, tornando-se imprecisos a pressões elevadas. A pressão "alta" é relativa: próximo ao ponto crítico, mesmo pressões moderadas requerem atenção. Consulte sempre as propriedades críticas das substâncias envolvidas.`,
+    hint:`Em termos práticos, pressões onde a fase vapor desvia significativamente do comportamento de gás ideal - geralmente <strong>acima de 10 bar</strong>, mas depende da substância - exigem o uso de Equações de Estado (CEoS). Isso porque modelos de g<sup>E</sup> diretos assumem, implicitamente, comportamento de gás ideal para a fase vapor, tornando-se imprecisos a pressões elevadas. A pressão "alta" é relativa: próximo ao ponto crítico, mesmo pressões moderadas requerem atenção. Consulte sempre as propriedades críticas das substâncias envolvidas.`,
     options:[
       {label:"Sim", next:"end_alta_p"},
       {label:"Não", next:"dados"}
@@ -520,7 +520,7 @@ const TREE = {
     step:4, total:5,
     q:"Há dados experimentais disponíveis para ajuste do modelo?",
     topic:"regressão e dados de equilíbrio",
-    hint:`<strong>Modelos correlativos</strong> (Margules, van Laar, Wilson, NRTL, UNIQUAC) são altamente precisos, mas exigem dados experimentais de equilíbrio (P-x-y, T-x-y ou LLE) para ajustar seus parâmetros binários. Esses dados podem vir de experimentos próprios, de bancos de dados como o DECHEMA ou o NIST TDE. <strong>Modelos preditivos</strong> (UNIFAC, F-SAC, COSMO-SAC) dispensam dados da mistura específica — estimam o comportamento a partir das propriedades dos grupos funcionais ou da carga superficial molecular, sendo úteis para triagem inicial ou quando simplesmente não há dados disponíveis.`,
+    hint:`<strong>Modelos correlativos</strong> (Margules, van Laar, Wilson, NRTL, UNIQUAC) são altamente precisos, mas exigem dados experimentais de equilíbrio (P-x-y, T-x-y ou LLE) para ajustar seus parâmetros binários. Esses dados podem vir de experimentos próprios, de bancos de dados como o DECHEMA ou o NIST TDE. <strong>Modelos preditivos</strong> (UNIFAC, F-SAC, COSMO-SAC) dispensam dados da mistura específica - estimam o comportamento a partir das propriedades dos grupos funcionais ou da carga superficial molecular, sendo úteis para triagem inicial ou quando simplesmente não há dados disponíveis.`,
     options:[
       {label:"Sim", next:"lle_dados"},
       {label:"Não", next:"lle_pred"}
@@ -530,7 +530,7 @@ const TREE = {
     step:5, total:5,
     q:"O processo envolve separação de fases líquidas (LLE)?",
     topic:"equilíbrio líquido-líquido (LLE)",
-    hint:`O <strong>Equilíbrio Líquido-Líquido (LLE)</strong> ocorre quando dois líquidos são parcialmente ou totalmente imiscíveis — como água e óleo, água e solventes orgânicos pesados. Matematicamente, para o modelo prever LLE, a curva de energia livre de Gibbs de mistura ΔG<sub>mix</sub> precisa apresentar regiões côncavas (instabilidade de fase). O modelo de Wilson, por construção matemática, nunca gera essa concavidade — tornando-o incapaz de prever LLE, independentemente dos valores dos seus parâmetros.`,
+    hint:`O <strong>Equilíbrio Líquido-Líquido (LLE)</strong> ocorre quando dois líquidos são parcialmente ou totalmente imiscíveis - como água e óleo, água e solventes orgânicos pesados. Matematicamente, para o modelo prever LLE, a curva de energia livre de Gibbs de mistura ΔG<sub>mix</sub> precisa apresentar regiões côncavas (instabilidade de fase). O modelo de Wilson, por construção matemática, nunca gera essa concavidade - tornando-o incapaz de prever LLE, independentemente dos valores dos seus parâmetros.`,
     options:[
       {label:"Sim", next:"end_corr_lle"},
       {label:"Não", next:"end_corr_vle"}
@@ -540,7 +540,7 @@ const TREE = {
     step:5, total:5,
     q:"O processo envolve separação de fases líquidas (LLE)?",
     topic:"LLE preditivo",
-    hint:`Modelos preditivos padrão como o UNIFAC original foram parametrizados prioritariamente com dados de VLE — e tendem a superestimar regiões de imiscibilidade ou falhar na forma correta das curvas binodais. Para prever LLE sem dados experimentais, existe uma versão específica: o <strong>UNIFAC-LLE</strong>, com parâmetros recalibrados exclusivamente a partir de dados de equilíbrio líquido-líquido. É importante não misturar os dois conjuntos de parâmetros.`,
+    hint:`Modelos preditivos padrão como o UNIFAC original foram parametrizados prioritariamente com dados de VLE - e tendem a superestimar regiões de imiscibilidade ou falhar na forma correta das curvas binodais. Para prever LLE sem dados experimentais, existe uma versão específica: o <strong>UNIFAC-LLE</strong>, com parâmetros recalibrados exclusivamente a partir de dados de equilíbrio líquido-líquido. É importante não misturar os dois conjuntos de parâmetros.`,
     options:[
       {label:"Sim", next:"end_pred_lle"},
       {label:"Não", next:"end_pred_vle"}
@@ -564,7 +564,7 @@ const RESULTS = {
     ]
   },
   end_ceos:{
-    title:"Equações cúbicas de estado — sistemas apolares",
+    title:"Equações cúbicas de estado - sistemas apolares",
     models:[
       {name:"Peng-Robinson (PR)",         key:"ceos", style:"ceos-style"},
       {name:"Soave-Redlich-Kwong (SRK)",  key:"ceos", style:"ceos-style"}
@@ -584,14 +584,14 @@ const RESULTS = {
     ]
   },
   end_corr_lle:{
-    title:"Modelos correlativos — VLE e LLE simultâneos",
+    title:"Modelos correlativos - VLE e LLE simultâneos",
     models:[
       {name:"NRTL",    key:"nrtl",    style:""},
       {name:"UNIQUAC", key:"uniquac", style:""}
     ]
   },
   end_corr_vle:{
-    title:"Modelos correlativos — VLE",
+    title:"Modelos correlativos - VLE",
     models:[
       {name:"Margules 2p", key:"margules", style:""},
       {name:"van Laar",    key:"vanlaar",  style:""},
@@ -601,13 +601,13 @@ const RESULTS = {
     ]
   },
   end_pred_lle:{
-    title:"Modelo preditivo — LLE",
+    title:"Modelo preditivo - LLE",
     models:[
       {name:"UNIFAC-LLE", key:"unifac_lle", style:"pred-style"}
     ]
   },
   end_pred_vle:{
-    title:"Modelos preditivos — VLE",
+    title:"Modelos preditivos - VLE",
     models:[
       {name:"UNIFAC",    key:"unifac", style:"pred-style"},
       {name:"COSMO-SAC", key:"fsac",  style:"pred-style"}
@@ -631,17 +631,17 @@ const MODELS_DETAIL = {
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup>[<i>A</i><sub>12</sub> + 2(<i>A</i><sub>21</sub>−<i>A</i><sub>12</sub>)<i>x</i><sub>1</sub>]<br><br>ln <i>γ</i><sub>2</sub> = <i>x</i><sub>1</sub><sup>2</sup>[<i>A</i><sub>21</sub> + 2(<i>A</i><sub>12</sub>−<i>A</i><sub>21</sub>)<i>x</i><sub>2</sub>]</div>
         <p class="ref-note">Caso simétrico (solução estritamente regular): A<sub>12</sub> = A<sub>21</sub> = A → g<sup>E</sup>/RT = Ax<sub>1</sub>x<sub>2</sub></p>`,
       "Aplicação":`
-        <p class="prose">Margules é a escolha natural quando se busca <strong>correlação rápida</strong> para sistemas simples — moléculas de tamanho, forma e natureza química semelhantes com desvios moderados da idealidade.</p>
+        <p class="prose">Margules é a escolha natural quando se busca <strong>correlação rápida</strong> para sistemas simples - moléculas de tamanho, forma e natureza química semelhantes com desvios moderados da idealidade.</p>
         <p class="subsection">Sistemas indicados</p>
         <ul class="dot-list">
-          <li><strong>Hidrocarbonetos de estrutura próxima:</strong> benzeno + tolueno, n-hexano + n-heptano — desvios pequenos, 1 ou 2 parâmetros suficientes.</li>
-          <li><strong>Estimativa de γ<sub>i</sub><sup>∞</sup>:</strong> ln γ<sub>1</sub><sup>∞</sup> = A<sub>12</sub> e ln γ<sub>2</sub><sup>∞</sup> = A<sub>21</sub> — dois pontos de diluição infinita determinam o modelo completo.</li>
+          <li><strong>Hidrocarbonetos de estrutura próxima:</strong> benzeno + tolueno, n-hexano + n-heptano - desvios pequenos, 1 ou 2 parâmetros suficientes.</li>
+          <li><strong>Estimativa de γ<sub>i</sub><sup>∞</sup>:</strong> ln γ<sub>1</sub><sup>∞</sup> = A<sub>12</sub> e ln γ<sub>2</sub><sup>∞</sup> = A<sub>21</sub> - dois pontos de diluição infinita determinam o modelo completo.</li>
           <li>Triagem rápida de azeótropos e ponto de partida antes de modelos mais sofisticados.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Margules não deriva de nenhuma teoria molecular — é o <strong>truncamento de uma expansão de Redlich-Kister</strong> em potências de (x<sub>1</sub> − x<sub>2</sub>). A forma de 2 parâmetros retém apenas os dois primeiros termos, satisfazendo automaticamente g<sup>E</sup> = 0 para os componentes puros e a equação de Gibbs-Duhem.</p>
+        <p class="prose">Margules não deriva de nenhuma teoria molecular - é o <strong>truncamento de uma expansão de Redlich-Kister</strong> em potências de (x<sub>1</sub> − x<sub>2</sub>). A forma de 2 parâmetros retém apenas os dois primeiros termos, satisfazendo automaticamente g<sup>E</sup> = 0 para os componentes puros e a equação de Gibbs-Duhem.</p>
         <ul class="dot-list">
-          <li>Puramente empírico — parâmetros sem interpretação molecular direta.</li>
+          <li>Puramente empírico - parâmetros sem interpretação molecular direta.</li>
           <li>Parâmetros ajustados por regressão de dados P-x-y ou T-x-y.</li>
           <li>Dependência com T não trivial: A<sub>ij</sub>(T) deve ser medida em múltiplas temperaturas.</li>
         </ul>`,
@@ -650,7 +650,7 @@ const MODELS_DETAIL = {
           <li><strong>LLE impreciso:</strong> embora matematicamente possa prever separação de fases, a forma da equação gera curvas binodais irreais. Para LLE, NRTL ou UNIQUAC são indispensáveis.</li>
           <li><strong>Falha em moléculas assimétricas:</strong> volumes molares muito diferentes → erros sistemáticos.</li>
           <li>Inadequado para misturas com ligação de hidrogênio forte.</li>
-          <li>Sem capacidade preditiva — sempre requer dados experimentais do par específico.</li>
+          <li>Sem capacidade preditiva - sempre requer dados experimentais do par específico.</li>
         </ul>
         <div class="highlight-box"><strong>Regra prática:</strong> quando |A<sub>12</sub>| ou |A<sub>21</sub>| > 2, o sistema exibirá instabilidade e separação de fases.</div>`
     }
@@ -665,22 +665,22 @@ const MODELS_DETAIL = {
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = (<i>A</i><sub>12</sub><i>A</i><sub>21</sub><i>x</i><sub>1</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub> + <i>A</i><sub>21</sub><i>x</i><sub>2</sub>)</div>
         <p class="section-label">Coeficientes de atividade</p>
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>A</i><sub>12</sub>/[1 + (<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)/(<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)]<sup>2</sup><br><br>ln <i>γ</i><sub>2</sub> = <i>A</i><sub>21</sub>/[1 + (<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)]<sup>2</sup></div>
-        <p class="ref-note">A<sub>12</sub> = ln γ<sub>1</sub><sup>∞</sup> · A<sub>21</sub> = ln γ<sub>2</sub><sup>∞</sup> — duas medidas de diluição infinita determinam o modelo.</p>`,
+        <p class="ref-note">A<sub>12</sub> = ln γ<sub>1</sub><sup>∞</sup> · A<sub>21</sub> = ln γ<sub>2</sub><sup>∞</sup> - duas medidas de diluição infinita determinam o modelo.</p>`,
       "Aplicação":`
-        <p class="prose">Van Laar é preferível ao Margules quando há <strong>assimetria pronunciada</strong> entre os componentes — como pressões de vapor muito diferentes ou tamanhos moleculares moderadamente distintos.</p>
+        <p class="prose">Van Laar é preferível ao Margules quando há <strong>assimetria pronunciada</strong> entre os componentes - como pressões de vapor muito diferentes ou tamanhos moleculares moderadamente distintos.</p>
         <ul class="dot-list">
           <li>Sistemas com desvios positivos assimétricos da Lei de Raoult.</li>
           <li>Parametrização rápida a partir de dois valores de γ<sub>i</sub><sup>∞</sup> (cromatografia de gás).</li>
-          <li>Estimativa algébrica de azeótropos binários — forma fechada facilita o cálculo.</li>
+          <li>Estimativa algébrica de azeótropos binários - forma fechada facilita o cálculo.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Derivado historicamente da equação de estado de van der Waals — uma das primeiras tentativas de fundamentar termodinamicamente o comportamento de misturas. A forma racional em x introduz uma distorção assimétrica em g<sup>E</sup> controlada pela razão A<sub>12</sub>/A<sub>21</sub>, que na teoria original se relacionaria à razão de volumes molares V<sub>1</sub>/V<sub>2</sub>.</p>`,
+        <p class="prose">Derivado historicamente da equação de estado de van der Waals - uma das primeiras tentativas de fundamentar termodinamicamente o comportamento de misturas. A forma racional em x introduz uma distorção assimétrica em g<sup>E</sup> controlada pela razão A<sub>12</sub>/A<sub>21</sub>, que na teoria original se relacionaria à razão de volumes molares V<sub>1</sub>/V<sub>2</sub>.</p>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>Curvas monotônicas:</strong> ln γ<sub>i</sub> não pode apresentar máximos, mínimos ou inversão de sinal — falha em sistemas halogenados complexos.</li>
-          <li><strong>Hipótese de mistura aleatória:</strong> ignora composição local — inadequado para fluidos fortemente polares.</li>
+          <li><strong>Curvas monotônicas:</strong> ln γ<sub>i</sub> não pode apresentar máximos, mínimos ou inversão de sinal - falha em sistemas halogenados complexos.</li>
+          <li><strong>Hipótese de mistura aleatória:</strong> ignora composição local - inadequado para fluidos fortemente polares.</li>
           <li>Não prevê LLE.</li>
-          <li>Extensão a multicomponentes inconsistente — limitado a binários na prática.</li>
+          <li>Extensão a multicomponentes inconsistente - limitado a binários na prática.</li>
         </ul>`
     }
   },
@@ -696,22 +696,22 @@ const MODELS_DETAIL = {
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = −ln(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) + <i>x</i><sub>2</sub>[Λ<sub>12</sub>/(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) − Λ<sub>21</sub>/(<i>x</i><sub>2</sub>+Λ<sub>21</sub><i>x</i><sub>1</sub>)]</div>
         <p class="ref-note">Λ<sub>ij</sub> = (V<sub>j</sub><sup>L</sup>/V<sub>i</sub><sup>L</sup>) exp[−(λ<sub>ij</sub>−λ<sub>ii</sub>)/RT] · parâmetros: diferenças de energia de interação λ<sub>ij</sub>−λ<sub>ii</sub></p>`,
       "Aplicação":`
-        <p class="prose">Wilson é a escolha natural para <strong>misturas polares completamente miscíveis</strong>, especialmente onde ligações de hidrogênio governam o comportamento — etanol + água, acetona + água, álcoois + hidrocarbonetos (miscíveis).</p>
+        <p class="prose">Wilson é a escolha natural para <strong>misturas polares completamente miscíveis</strong>, especialmente onde ligações de hidrogênio governam o comportamento - etanol + água, acetona + água, álcoois + hidrocarbonetos (miscíveis).</p>
         <ul class="dot-list">
-          <li>Destilação azeotrópica e extrativa de sistemas homogêneos — padrão histórico.</li>
+          <li>Destilação azeotrópica e extrativa de sistemas homogêneos - padrão histórico.</li>
           <li>Extrapolação de temperatura confiável via dependência explícita Λ<sub>ij</sub>(T).</li>
           <li><strong>Extensão multicomponente sem parâmetros adicionais:</strong> apenas N(N−1) parâmetros binários descrevem completamente uma mistura de N componentes.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Marco histórico de 1964: introduziu o conceito de <strong>composição local</strong> — a concentração ao redor de uma molécula central difere da composição global por conta das diferenças de energia de interação. Esse conceito fundamenta diretamente o NRTL e o UNIQUAC.</p>
+        <p class="prose">Marco histórico de 1964: introduziu o conceito de <strong>composição local</strong> - a concentração ao redor de uma molécula central difere da composição global por conta das diferenças de energia de interação. Esse conceito fundamenta diretamente o NRTL e o UNIQUAC.</p>
         <div class="eq-block"><i>x</i><sub>21</sub>/<i>x</i><sub>11</sub> = (<i>x</i><sub>2</sub>/<i>x</i><sub>1</sub>)·exp[−(λ<sub>12</sub>−λ<sub>11</sub>)/<i>RT</i>]</div>
         <p class="prose">Os parâmetros têm significado físico direto: (λ<sub>12</sub>−λ<sub>11</sub>) é a diferença entre a energia de interação cruzada 1-2 e a homointeração 1-1.</p>`,
       "Limitações":`
-        <div class="highlight-box"><strong>Limitação crítica e incontornável:</strong> Wilson não pode prever LLE. A função g<sup>E</sup> é <em>sempre</em> estritamente convexa por construção — nenhuma combinação de parâmetros gera instabilidade de fase. Nunca use Wilson em sistemas parcialmente miscíveis.</div>
+        <div class="highlight-box"><strong>Limitação crítica e incontornável:</strong> Wilson não pode prever LLE. A função g<sup>E</sup> é <em>sempre</em> estritamente convexa por construção - nenhuma combinação de parâmetros gera instabilidade de fase. Nunca use Wilson em sistemas parcialmente miscíveis.</div>
         <ul class="dot-list">
           <li>Requer V<sub>i</sub><sup>L</sup> de fontes externas (tabelas, correlação de Rackett).</li>
           <li>Não aplicável diretamente a polímeros.</li>
-          <li>Sem capacidade preditiva — parâmetros dependem de dados experimentais do par.</li>
+          <li>Sem capacidade preditiva - parâmetros dependem de dados experimentais do par.</li>
         </ul>`
     }
   },
@@ -727,11 +727,11 @@ const MODELS_DETAIL = {
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup>[τ<sub>21</sub>(G<sub>21</sub>/(<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>G<sub>21</sub>))<sup>2</sup> + τ<sub>12</sub>G<sub>12</sub>/(<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub>G<sub>12</sub>)<sup>2</sup>]</div>
         <p class="ref-note">G<sub>ij</sub> = exp(−α<sub>ij</sub>τ<sub>ij</sub>) · τ<sub>ij</sub> = (g<sub>ij</sub>−g<sub>jj</sub>)/RT · α típico: 0,2–0,47</p>`,
       "Aplicação":`
-        <p class="prose">O NRTL é o modelo correlativo mais <strong>versátil</strong> — padrão em simuladores industriais (Aspen Plus, HYSYS, PRO/II) para sistemas polares complexos com e sem separação de fases.</p>
+        <p class="prose">O NRTL é o modelo correlativo mais <strong>versátil</strong> - padrão em simuladores industriais (Aspen Plus, HYSYS, PRO/II) para sistemas polares complexos com e sem separação de fases.</p>
         <ul class="dot-list">
           <li><strong>VLE + LLE simultâneos:</strong> extração líquido-líquido, azeótropos heterogêneos, diagramas ternários com duas fases.</li>
           <li>Soluções eletrolíticas via extensão eNRTL (Chen & Evans, 1986).</li>
-          <li>Destilação extrativa — triéticos com solvente seletor.</li>
+          <li>Destilação extrativa - triéticos com solvente seletor.</li>
         </ul>
         <p class="subsection">Guia para o parâmetro α</p>
         <div class="highlight-box">
@@ -740,11 +740,11 @@ const MODELS_DETAIL = {
           α ≈ 0,47 → compostos apolares saturados
         </div>`,
       "Características":`
-        <p class="prose">Renon & Prausnitz (1968) estenderam Wilson introduzindo o <strong>parâmetro de não-aleatoriedade α</strong>: corrige a hipótese implícita de Wilson de que a distribuição local de Boltzmann é sempre aleatória. Para α > 0, diferenças energéticas exercem maior influência sobre o agrupamento molecular local, permitindo que g<sup>E</sup> desenvolva regiões de convexidade — condição matemática necessária para instabilidade de fase e LLE.</p>`,
+        <p class="prose">Renon & Prausnitz (1968) estenderam Wilson introduzindo o <strong>parâmetro de não-aleatoriedade α</strong>: corrige a hipótese implícita de Wilson de que a distribuição local de Boltzmann é sempre aleatória. Para α > 0, diferenças energéticas exercem maior influência sobre o agrupamento molecular local, permitindo que g<sup>E</sup> desenvolva regiões de convexidade - condição matemática necessária para instabilidade de fase e LLE.</p>`,
       "Limitações":`
         <ul class="dot-list">
           <li><strong>3 parâmetros por par binário:</strong> mais dados necessários; múltiplos mínimos locais na regressão.</li>
-          <li>α frequentemente fixado em 0,3 para estabilidade algorítmica — perde flexibilidade em sistemas atípicos.</li>
+          <li>α frequentemente fixado em 0,3 para estabilidade algorítmica - perde flexibilidade em sistemas atípicos.</li>
           <li>Extrapolação de T limitada fora da faixa de ajuste.</li>
           <li>Não recomendado para polímeros sem extensões específicas.</li>
         </ul>`
@@ -756,30 +756,30 @@ const MODELS_DETAIL = {
     accent:"#603d80",
     tabs:{
       "Equações":`
-        <p class="section-label">Estrutura modular — duas contribuições</p>
+        <p class="section-label">Estrutura modular - duas contribuições</p>
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = (g<sup>E</sup>/RT)<sub>comb</sub> + (g<sup>E</sup>/RT)<sub>res</sub></div>
         <div class="eq-block">ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup></div>
         <p class="ref-note">τ<sub>ij</sub> = exp[−(u<sub>ij</sub>−u<sub>jj</sub>)/RT] · r<sub>i</sub>, q<sub>i</sub>: parâmetros estruturais tabelados por Bondi (1968)</p>`,
       "Aplicação":`
-        <p class="prose">UNIQUAC é preferível quando os componentes diferem substancialmente em <strong>tamanho e forma molecular</strong> — situação em que Wilson e NRTL não representam adequadamente a contribuição entrópica de tamanho.</p>
+        <p class="prose">UNIQUAC é preferível quando os componentes diferem substancialmente em <strong>tamanho e forma molecular</strong> - situação em que Wilson e NRTL não representam adequadamente a contribuição entrópica de tamanho.</p>
         <ul class="dot-list">
           <li>Sistemas com polímeros, proteínas ou moléculas de cadeia longa + solventes.</li>
           <li>Equilíbrio sólido-líquido (SLE): solubilidade de sólidos cristalinos.</li>
-          <li>VLE e LLE — base sobre a qual o UNIFAC é construído.</li>
+          <li>VLE e LLE - base sobre a qual o UNIFAC é construído.</li>
         </ul>`,
       "Características":`
         <p class="prose">Abrams & Prausnitz (1975) separaram g<sup>E</sup> em duas contribuições fisicamente independentes:</p>
         <ul class="dot-list">
-          <li><strong>Combinatorial (entrópica, independente de T):</strong> diferença de tamanho (r) e área superficial (q) das moléculas, calculados por geometria molecular — não precisam ser ajustados.</li>
-          <li><strong>Residual (energética):</strong> interações via τ<sub>ij</sub> aplicados à fração de área superficial θ<sub>i</sub> — fisicamente mais rigoroso que Wilson/NRTL para moléculas de tamanhos diferentes.</li>
+          <li><strong>Combinatorial (entrópica, independente de T):</strong> diferença de tamanho (r) e área superficial (q) das moléculas, calculados por geometria molecular - não precisam ser ajustados.</li>
+          <li><strong>Residual (energética):</strong> interações via τ<sub>ij</sub> aplicados à fração de área superficial θ<sub>i</sub> - fisicamente mais rigoroso que Wilson/NRTL para moléculas de tamanhos diferentes.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Hipótese de rede rígida subestima anisotropia em sistemas aquosos fortemente polares — NRTL tende a ser mais preciso nesses casos.</li>
+          <li>Hipótese de rede rígida subestima anisotropia em sistemas aquosos fortemente polares - NRTL tende a ser mais preciso nesses casos.</li>
           <li>Implementação mais complexa: normalização de Φ<sub>i</sub> e θ<sub>i</sub> requer cuidado.</li>
-          <li>Parte residual ainda correlativa — sem capacidade preditiva sem dados.</li>
+          <li>Parte residual ainda correlativa - sem capacidade preditiva sem dados.</li>
         </ul>
-        <div class="highlight-box"><strong>Para polímeros:</strong> use variante modificada (Larsen-Rasmussen, 1987) — UNIQUAC padrão subestima a entropia de mistura de cadeias longas.</div>`
+        <div class="highlight-box"><strong>Para polímeros:</strong> use variante modificada (Larsen-Rasmussen, 1987) - UNIQUAC padrão subestima a entropia de mistura de cadeias longas.</div>`
     }
   },
   unifac:{
@@ -794,7 +794,7 @@ const MODELS_DETAIL = {
         <div class="eq-block">ln <i>γ</i><sub>i</sub><sup>R</sup> = Σ<sub>k</sub> ν<sub>k</sub><sup>(i)</sup>[ln Γ<sub>k</sub> − ln Γ<sub>k</sub><sup>(i)</sup>]</div>
         <p class="ref-note">Ψ<sub>mn</sub> = exp(−a<sub>mn</sub>/T) · a<sub>mn</sub>: parâmetros de interação grupo m–grupo n (tabelas UNIFAC)</p>`,
       "Aplicação":`
-        <p class="prose">UNIFAC é o único modelo <strong>preditivo</strong> do conjunto — estima γ<sub>i</sub> sem nenhum dado experimental da mistura de interesse, a partir apenas da estrutura molecular dos componentes.</p>
+        <p class="prose">UNIFAC é o único modelo <strong>preditivo</strong> do conjunto - estima γ<sub>i</sub> sem nenhum dado experimental da mistura de interesse, a partir apenas da estrutura molecular dos componentes.</p>
         <ul class="dot-list">
           <li>Triagem de solventes em projeto de processos sem medições laboratoriais.</li>
           <li>Estimativa de log K<sub>ow</sub>, pressões de vapor de misturas, limites de inflamabilidade.</li>
@@ -802,8 +802,8 @@ const MODELS_DETAIL = {
         </ul>
         <p class="subsection">Versões especializadas</p>
         <div class="highlight-box">
-          <strong>Original</strong> (Fredenslund, 1975): parâmetros independentes de T — bom para VLE.<br>
-          <strong>mod-UNIFAC Dortmund</strong> (1993): a<sub>mn</sub>(T) quadrático — melhor para h<sup>E</sup>, γ<sup>∞</sup> e LLE.<br>
+          <strong>Original</strong> (Fredenslund, 1975): parâmetros independentes de T - bom para VLE.<br>
+          <strong>mod-UNIFAC Dortmund</strong> (1993): a<sub>mn</sub>(T) quadrático - melhor para h<sup>E</sup>, γ<sup>∞</sup> e LLE.<br>
           <strong>UNIFAC-LLE</strong>: parâmetros calibrados exclusivamente com dados LLE.
         </div>`,
       "Características":`
@@ -826,7 +826,7 @@ const MODELS_DETAIL = {
       "Equações":`
         <p class="section-label">Mesma estrutura do UNIFAC</p>
         <div class="eq-block">ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup></div>
-        <p class="ref-note">Os parâmetros de interação a<sub>mn</sub> são diferentes dos do UNIFAC original — calibrados exclusivamente com dados de equilíbrio líquido-líquido.</p>`,
+        <p class="ref-note">Os parâmetros de interação a<sub>mn</sub> são diferentes dos do UNIFAC original - calibrados exclusivamente com dados de equilíbrio líquido-líquido.</p>`,
       "Aplicação":`
         <ul class="dot-list">
           <li>Projeto de extratores líquido-líquido sem dados experimentais disponíveis.</li>
@@ -834,9 +834,9 @@ const MODELS_DETAIL = {
           <li>Triagem de solventes para extração (ex.: purificação de princípios ativos farmacêuticos).</li>
         </ul>`,
       "Características":`
-        <p class="prose">O UNIFAC original foi calibrado com dados de VLE e tende a <strong>superestimar</strong> as regiões de imiscibilidade — prevendo LLE onde o sistema é na verdade miscível. O UNIFAC-LLE resolve isso usando um conjunto de parâmetros a<sub>mn</sub> re-ajustados exclusivamente a partir de dados de equilíbrio líquido-líquido, corrigindo tanto a posição quanto a forma das curvas binodais.</p>`,
+        <p class="prose">O UNIFAC original foi calibrado com dados de VLE e tende a <strong>superestimar</strong> as regiões de imiscibilidade - prevendo LLE onde o sistema é na verdade miscível. O UNIFAC-LLE resolve isso usando um conjunto de parâmetros a<sub>mn</sub> re-ajustados exclusivamente a partir de dados de equilíbrio líquido-líquido, corrigindo tanto a posição quanto a forma das curvas binodais.</p>`,
       "Limitações":`
-        <div class="highlight-box"><strong>Atenção crítica:</strong> os parâmetros do UNIFAC-LLE <em>não devem</em> ser usados para prever VLE — os resultados serão incorretos. Mantenha os dois conjuntos de parâmetros estritamente separados.</div>
+        <div class="highlight-box"><strong>Atenção crítica:</strong> os parâmetros do UNIFAC-LLE <em>não devem</em> ser usados para prever VLE - os resultados serão incorretos. Mantenha os dois conjuntos de parâmetros estritamente separados.</div>
         <ul class="dot-list">
           <li>Herda a limitação de não distinguir isômeros estruturais.</li>
           <li>Cobertura de grupos funcionais menor que o UNIFAC-VLE original.</li>
@@ -844,7 +844,7 @@ const MODELS_DETAIL = {
     }
   },
   ceos:{
-    name:"CEoS — PR, SRK", tag:"Equação de Estado Cúbica",
+    name:"CEoS - PR, SRK", tag:"Equação de Estado Cúbica",
     pill:"Peng-Robinson · Soave-Redlich-Kwong",
     accent:"#4a5a6a",
     tabs:{
@@ -857,17 +857,17 @@ const MODELS_DETAIL = {
         <ul class="dot-list">
           <li>Sistemas de hidrocarbonetos em refinarias e plantas de gás natural.</li>
           <li>Cálculos de flash, envoltórias de fase, pontos críticos de misturas.</li>
-          <li>Alta pressão — onde modelos de g<sup>E</sup> diretos (que assumem vapor ideal) falham.</li>
+          <li>Alta pressão - onde modelos de g<sup>E</sup> diretos (que assumem vapor ideal) falham.</li>
         </ul>`,
       "Características":`
         <ul class="dot-list">
-          <li>Utilizam T<sub>c</sub>, P<sub>c</sub> e fator acêntrico ω — disponíveis para a maioria dos compostos.</li>
+          <li>Utilizam T<sub>c</sub>, P<sub>c</sub> e fator acêntrico ω - disponíveis para a maioria dos compostos.</li>
           <li>Regras de mistura clássicas (van der Waals) com um parâmetro de interação binário k<sub>ij</sub>.</li>
           <li>Excelente representação de sistemas apolares em toda a faixa de pressão.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Volume molar de líquidos frequentemente impreciso — usar correlações específicas (Rackett) quando necessário.</li>
+          <li>Volume molar de líquidos frequentemente impreciso - usar correlações específicas (Rackett) quando necessário.</li>
           <li>Falham para sistemas polares sem regras de mistura avançadas.</li>
           <li>Não representam bem misturas aquosas ou com ligação de hidrogênio dominante.</li>
         </ul>`
@@ -883,13 +883,13 @@ const MODELS_DETAIL = {
         <div class="eq-block"><i>a</i> = <i>b</i>[Σ<sub>i</sub><i>x</i><sub>i</sub>(<i>a</i><sub>i</sub>/<i>b</i><sub>i</sub>) + <i>g</i><sup>E</sup>/<i>C*</i>]</div>
         <p class="ref-note">C* é uma constante numérica que depende da regra de mistura específica utilizada.</p>`,
       "Aplicação":`
-        <p class="prose">Para <strong>sistemas polares em alta pressão</strong>, combinar uma CEoS com uma regra de mistura baseada em g<sup>E</sup> é a estratégia padrão — permite usar os parâmetros já existentes de NRTL ou UNIQUAC dentro de uma equação de estado válida em ampla faixa de pressão.</p>
+        <p class="prose">Para <strong>sistemas polares em alta pressão</strong>, combinar uma CEoS com uma regra de mistura baseada em g<sup>E</sup> é a estratégia padrão - permite usar os parâmetros já existentes de NRTL ou UNIQUAC dentro de uma equação de estado válida em ampla faixa de pressão.</p>
         <ul class="dot-list">
           <li><strong>SCMR / Wong-Sandler:</strong> conecta o parâmetro a da CEoS ao g<sup>E</sup> de modelos como NRTL ou UNIQUAC.</li>
-          <li><strong>MHV1 / MHV2:</strong> regras de volume molar modificado — usadas com UNIFAC para caráter preditivo (ex.: PSRK).</li>
+          <li><strong>MHV1 / MHV2:</strong> regras de volume molar modificado - usadas com UNIFAC para caráter preditivo (ex.: PSRK).</li>
         </ul>`,
       "Características":`
-        <p class="prose">Essas abordagens permitem reutilizar parâmetros de g<sup>E</sup> existentes na literatura dentro de equações de estado — combinando a robustez das CEoS em alta pressão com a precisão dos modelos de atividade para sistemas polares.</p>`,
+        <p class="prose">Essas abordagens permitem reutilizar parâmetros de g<sup>E</sup> existentes na literatura dentro de equações de estado - combinando a robustez das CEoS em alta pressão com a precisão dos modelos de atividade para sistemas polares.</p>`,
       "Limitações":`
         <ul class="dot-list">
           <li>Algumas formulações sofrem de inconsistência na transição para baixas densidades (limite de gás ideal).</li>
@@ -906,15 +906,15 @@ const MODELS_DETAIL = {
       "Conceito":`
         <p class="section-label">SRK + UNIFAC via MHV1</p>
         <div class="eq-block">CEoS (SRK) + Regra de Mistura (MHV1) + UNIFAC</div>
-        <p class="ref-note">Holderbaum & Gmehling (1991) — estende a validade do UNIFAC para alta pressão e sistemas com gases supercríticos.</p>`,
+        <p class="ref-note">Holderbaum & Gmehling (1991) - estende a validade do UNIFAC para alta pressão e sistemas com gases supercríticos.</p>`,
       "Aplicação":`
         <ul class="dot-list">
           <li>Solubilidade de gases leves (H₂, N₂, CO₂, CH₄, O₂) em solventes orgânicos a alta pressão.</li>
-          <li>Sistemas onde não há dados experimentais — caráter preditivo herdado do UNIFAC.</li>
+          <li>Sistemas onde não há dados experimentais - caráter preditivo herdado do UNIFAC.</li>
           <li>Separação de gases em processos de absorção física.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Combina a robustez da SRK em alta pressão com a capacidade preditiva do UNIFAC via a regra de mistura MHV1 — o melhor dos dois mundos para sistemas com gases supercríticos sem dados disponíveis.</p>`,
+        <p class="prose">Combina a robustez da SRK em alta pressão com a capacidade preditiva do UNIFAC via a regra de mistura MHV1 - o melhor dos dois mundos para sistemas com gases supercríticos sem dados disponíveis.</p>`,
       "Limitações":`
         <ul class="dot-list">
           <li>Herda as limitações do UNIFAC (isômeros, grupos não tabelados).</li>
@@ -931,7 +931,7 @@ const MODELS_DETAIL = {
       "Equações":`
         <p class="section-label">Equilíbrio em diluição infinita</p>
         <div class="eq-block"><i>y</i><sub>i</sub><i>P</i> = <i>x</i><sub>i</sub> <i>H</i><sub>i,solvente</sub>(T, P)</div>
-        <p class="ref-note">H<sub>i</sub>: constante de Henry do gás i no solvente — fortemente dependente de T e do solvente específico.</p>`,
+        <p class="ref-note">H<sub>i</sub>: constante de Henry do gás i no solvente - fortemente dependente de T e do solvente específico.</p>`,
       "Aplicação":`
         <ul class="dot-list">
           <li>Solubilidade de gases leves (O₂, N₂, CO₂, H₂) em frações molares minúsculas no solvente.</li>
@@ -939,10 +939,10 @@ const MODELS_DETAIL = {
           <li>Cálculos de stripping e desgaseificação de líquidos.</li>
         </ul>`,
       "Características":`
-        <p class="prose">A lei de Henry é o equivalente da lei de Raoult para um soluto em <strong>diluição infinita</strong>. H<sub>i</sub> é definida como lim(x<sub>i</sub>→0) P<sub>i</sub>/x<sub>i</sub> — o produto γ<sub>i</sub><sup>∞</sup>·P<sub>i</sub><sup>sat</sup> no limite ideal. É fisicamente motivada: em diluição infinita, o soluto está completamente cercado por moléculas do solvente.</p>`,
+        <p class="prose">A lei de Henry é o equivalente da lei de Raoult para um soluto em <strong>diluição infinita</strong>. H<sub>i</sub> é definida como lim(x<sub>i</sub>→0) P<sub>i</sub>/x<sub>i</sub> - o produto γ<sub>i</sub><sup>∞</sup>·P<sub>i</sub><sup>sat</sup> no limite ideal. É fisicamente motivada: em diluição infinita, o soluto está completamente cercado por moléculas do solvente.</p>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Válida somente para baixíssimas concentrações de gás — perde validade fora do regime de diluição infinita.</li>
+          <li>Válida somente para baixíssimas concentrações de gás - perde validade fora do regime de diluição infinita.</li>
           <li>Para altas pressões, requer correção adicional com o fator de Poynting e fugacidade da fase vapor.</li>
           <li>H<sub>i</sub> deve ser determinada experimentalmente para cada par gás-solvente e temperatura.</li>
         </ul>`
@@ -954,30 +954,30 @@ const MODELS_DETAIL = {
     accent:"#603d80",
     tabs:{
       "Equações":`
-        <p class="section-label">eNRTL — contribuições aditivas</p>
+        <p class="section-label">eNRTL - contribuições aditivas</p>
         <div class="eq-block"><i>g</i><sup>E</sup> = <i>g</i><sup>E</sup><sub>PDH</sub> + <i>g</i><sup>E</sup><sub>Born</sub> + <i>g</i><sup>E</sup><sub>local</sub></div>
         <p class="ref-note">PDH: Pitzer-Debye-Hückel (longo alcance) · Born: transferência de carga entre meios · local: NRTL de curto alcance</p>
-        <p class="section-label">Modelo de Pitzer — série virial iônica</p>
+        <p class="section-label">Modelo de Pitzer - série virial iônica</p>
         <div class="eq-block">ln <i>γ</i><sub>±</sub> = <i>f</i>(I) + Σ<sub>ij</sub>β<sub>ij</sub><i>m</i><sub>j</sub> + Σ<sub>ijk</sub>μ<sub>ijk</sub><i>m</i><sub>j</sub><i>m</i><sub>k</sub></div>
         <p class="ref-note">I: força iônica · m: molalidade · β, μ: parâmetros de interação específicos iônica de Pitzer</p>`,
       "Aplicação":`
         <p class="prose">Modelos para eletrólitos são <strong>obrigatórios</strong> quando há presença de íons na solução. Modelos convencionais de g<sup>E</sup> ignoram as forças de Coulomb de longo alcance e produzem resultados incorretos.</p>
         <ul class="dot-list">
-          <li><strong>eNRTL (Chen & Evans, 1986):</strong> padrão em Aspen Plus para soluções aquosas de sais, ácidos e bases — combina PDH para interações iônicas de longo alcance com NRTL para interações de curto alcance entre moléculas e íons.</li>
-          <li><strong>Modelos de Pitzer:</strong> expansão virial específica para soluções iônicas — especialmente precisa para soluções concentradas de sais inorgânicos (salmouras, processos de dessalinização, extração de minerais).</li>
+          <li><strong>eNRTL (Chen & Evans, 1986):</strong> padrão em Aspen Plus para soluções aquosas de sais, ácidos e bases - combina PDH para interações iônicas de longo alcance com NRTL para interações de curto alcance entre moléculas e íons.</li>
+          <li><strong>Modelos de Pitzer:</strong> expansão virial específica para soluções iônicas - especialmente precisa para soluções concentradas de sais inorgânicos (salmouras, processos de dessalinização, extração de minerais).</li>
         </ul>`,
       "Características":`
-        <p class="prose">A grande diferença em relação aos modelos de g<sup>E</sup> convencionais é a inclusão do <strong>termo de Pitzer-Debye-Hückel</strong>, que captura as forças eletrostáticas de longo alcance entre íons — forças que decaem muito mais lentamente com a distância do que as interações de van der Waals ou dipolo-dipolo.</p>
+        <p class="prose">A grande diferença em relação aos modelos de g<sup>E</sup> convencionais é a inclusão do <strong>termo de Pitzer-Debye-Hückel</strong>, que captura as forças eletrostáticas de longo alcance entre íons - forças que decaem muito mais lentamente com a distância do que as interações de van der Waals ou dipolo-dipolo.</p>
         <ul class="dot-list">
-          <li>eNRTL: resolve a limitação de neutralidade de carga — trabalha com pares de íons (cátion + ânion) como unidade básica.</li>
+          <li>eNRTL: resolve a limitação de neutralidade de carga - trabalha com pares de íons (cátion + ânion) como unidade básica.</li>
           <li>Pitzer: extremamente preciso para soluções concentradas de eletrólitos simples; usa série virial truncada em molalidade.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Complexidade matemática elevada — vasto número de parâmetros de interação íon-íon e íon-solvente.</li>
-          <li>Banco de parâmetros limitado — compostos menos comuns podem não ter parâmetros disponíveis.</li>
+          <li>Complexidade matemática elevada - vasto número de parâmetros de interação íon-íon e íon-solvente.</li>
+          <li>Banco de parâmetros limitado - compostos menos comuns podem não ter parâmetros disponíveis.</li>
           <li>Pitzer: menos adequado para misturas de múltiplos eletrólitos e para solventes não aquosos.</li>
-          <li>Implementação computacional delicada — não recomendável sem ambiente de simulação validado.</li>
+          <li>Implementação computacional delicada - não recomendável sem ambiente de simulação validado.</li>
         </ul>`
     }
   },
@@ -992,17 +992,17 @@ const MODELS_DETAIL = {
         <p class="ref-note">σ-profile: distribuição da densidade de carga superficial da molécula, obtida por DFT (Teoria do Funcional da Densidade).</p>`,
       "Aplicação":`
         <ul class="dot-list">
-          <li>Projeto de novos solventes na indústria farmacêutica e química fina — sem qualquer dado experimental de mistura.</li>
+          <li>Projeto de novos solventes na indústria farmacêutica e química fina - sem qualquer dado experimental de mistura.</li>
           <li>Triagem de ILs (líquidos iônicos) como solventes verdes.</li>
           <li>Sistemas para os quais nenhum parâmetro de UNIFAC está disponível.</li>
         </ul>`,
       "Características":`
-        <p class="prose">COSMO-SAC e F-SAC representam o <strong>estado da arte em predição termodinâmica</strong>. A inovação central é calcular as interações moleculares a partir da distribuição de carga superficial (σ-profile) de cada molécula, obtida por cálculos de mecânica quântica (DFT + modelo de solvente contínuo COSMO). Isso torna o modelo completamente preditivo — sem parâmetros de mistura ajustados.</p>`,
+        <p class="prose">COSMO-SAC e F-SAC representam o <strong>estado da arte em predição termodinâmica</strong>. A inovação central é calcular as interações moleculares a partir da distribuição de carga superficial (σ-profile) de cada molécula, obtida por cálculos de mecânica quântica (DFT + modelo de solvente contínuo COSMO). Isso torna o modelo completamente preditivo - sem parâmetros de mistura ajustados.</p>`,
       "Limitações":`
         <ul class="dot-list">
           <li>Custo computacional inicial alto: cálculo DFT/COSMO necessário para cada molécula nova.</li>
           <li>Precisão ainda inferior ao NRTL/UNIQUAC ajustados para a maioria dos sistemas comuns.</li>
-          <li>Implementação avançada — requer software de química quântica (ex.: Gaussian, ORCA, Turbomole).</li>
+          <li>Implementação avançada - requer software de química quântica (ex.: Gaussian, ORCA, Turbomole).</li>
           <li>Banco de sigma-profiles ainda limitado para compostos muito complexos ou incomuns.</li>
         </ul>`
     }
@@ -1046,7 +1046,7 @@ function renderNode(nodeId) {
                stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
             <polyline points="6 9 12 15 18 9"/>
           </svg>
-          O que é ${nd.topic}?
+          Mais informações sobre ${nd.topic}
         </button>
         <div class="hint-content" id="hint-${nodeId}" role="note">${nd.hint}</div>`;
     }
