@@ -844,32 +844,45 @@ const MODELS_DETAIL = {
     }
   },
   ceos:{
-    name:"CEoS - PR, SRK", tag:"Equação de Estado Cúbica",
-    pill:"Peng-Robinson · Soave-Redlich-Kwong",
+    name:"CEoS — PR & SRK", tag:"Equação de Estado Cúbica",
+    pill:"Sistemas Apolares · Ampla Faixa de P e T",
     accent:"#4a5a6a",
     tabs:{
       "Equações":`
-        <p class="section-label">Forma genérica das equações cúbicas</p>
-        <div class="eq-block"><i>P</i> = <i>RT</i>/(<i>v</i>−<i>b</i>) − <i>a</i>(T)/(<i>v</i><sup>2</sup>+<i>ubv</i>+<i>wb</i><sup>2</sup>)</div>
-        <p class="ref-note">PR: u = 2, w = −1 · SRK: u = 1, w = 0 · parâmetros a(T) e b de T<sub>c</sub>, P<sub>c</sub> e ω</p>`,
+        <p class="section-label">Forma Cúbica Genérica</p>
+        <div class="eq-block"><i>P</i> = <i>RT</i>/(<i>v</i>−<i>b</i>) − <i>a</i>(T)/[<i>v</i><sup>2</sup> + <i>ubv</i> + <i>wb</i><sup>2</sup>]</div>
+        
+        <p class="subsection">1. Peng-Robinson (PR)</p>
+        <p class="prose">Definições geométricas: <strong><i>u</i> = 2, <i>w</i> = −1</strong></p>
+        <div class="eq-block">
+          <i>a</i><sub>i</sub>(T) = 0,45724 (<i>R</i><sup>2</sup><i>T</i><sub>c,i</sub><sup>2</sup> / <i>P</i><sub>c,i</sub>) · <i>α</i>(T)<br>
+          <i>b</i><sub>i</sub> = 0,07780 (<i>R</i><i>T</i><sub>c,i</sub> / <i>P</i><sub>c,i</sub>)<br>
+          <i>α</i><sup>0.5</sup> = 1 + (0,37464 + 1,54226<i>ω</i> − 0,26992<i>ω</i><sup>2</sup>)(1 − <i>T</i><sub>r</sub><sup>0.5</sup>)
+        </div>
+
+        <p class="subsection">2. Soave-Redlich-Kwong (SRK)</p>
+        <p class="prose">Definições geométricas: <strong><i>u</i> = 1, <i>w</i> = 0</strong></p>
+        <div class="eq-block">
+          <i>a</i><sub>i</sub>(T) = 0,42748 (<i>R</i><sup>2</sup><i>T</i><sub>c,i</sub><sup>2</sup> / <i>P</i><sub>c,i</sub>) · <i>α</i>(T)<br>
+          <i>b</i><sub>i</sub> = 0,08664 (<i>R</i><i>T</i><sub>c,i</sub> / <i>P</i><sub>c,i</sub>)<br>
+          <i>α</i><sup>0.5</sup> = 1 + (0,480 + 1,574<i>ω</i> − 0,176<i>ω</i><sup>2</sup>)(1 − <i>T</i><sub>r</sub><sup>0.5</sup>)
+        </div>`,
       "Aplicação":`
-        <p class="prose">Equações cúbicas de estado são o padrão para sistemas <strong>apolares em amplas faixas de pressão e temperatura</strong>. Ao contrário dos modelos de g<sup>E</sup>, descrevem fase vapor e líquida com uma única equação.</p>
+        <p class="prose">As equações cúbicas de estado são o padrão absoluto na indústria do refino e processamento de gás natural para o tratamento de fluidos apolares ou fracamente polares.</p>
         <ul class="dot-list">
-          <li>Sistemas de hidrocarbonetos em refinarias e plantas de gás natural.</li>
-          <li>Cálculos de flash, envoltórias de fase, pontos críticos de misturas.</li>
-          <li>Alta pressão - onde modelos de g<sup>E</sup> diretos (que assumem vapor ideal) falham.</li>
+          <li><strong>Sistemas de Hidrocarbonetos:</strong> Modelagem precisa de misturas contendo alcanos, alcenos e aromáticos em equilíbrios líquido-vapor (VLE).</li>
+          <li><strong>Abordagem Unificada:</strong> Ao contrário dos métodos de coeficiente de atividade (gᴱ), utilizam uma única equação para descrever tanto a fase líquida quanto a fase vapor simultaneamente, garantindo consistência termodinâmica.</li>
         </ul>`,
       "Características":`
         <ul class="dot-list">
-          <li>Utilizam T<sub>c</sub>, P<sub>c</sub> e fator acêntrico ω - disponíveis para a maioria dos compostos.</li>
-          <li>Regras de mistura clássicas (van der Waals) com um parâmetro de interação binário k<sub>ij</sub>.</li>
-          <li>Excelente representação de sistemas apolares em toda a faixa de pressão.</li>
+          <li><strong>Parâmetros Puros:</strong> Requerem apenas propriedades fundamentais: Temperatura Crítica (T<sub>c</sub>), Pressão Crítica (P<sub>c</sub>) e Fator Acêntrico (<i>ω</i>).</li>
+          <li><strong>Regras de Mistura Clássicas:</strong> Utilizam formulações de van der Waals calibradas por um único parâmetro de interação binária empírico (<i>k</i><sub>ij</sub>).</li>
+          <li>Representam com excelente acurácia os desvios de comportamento de gases reais em altas pressões.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Volume molar de líquidos frequentemente impreciso - usar correlações específicas (Rackett) quando necessário.</li>
-          <li>Falham para sistemas polares sem regras de mistura avançadas.</li>
-          <li>Não representam bem misturas aquosas ou com ligação de hidrogênio dominante.</li>
+          <li><strong>Deficiência Volumétrica:</strong> Equações cúbicas inerentemente apresentam limitações para predizer de forma exata o volume molar (densidade) de fases líquidas. Para mitigar isso, simuladores aplicam a translação de volume (método de Peneloux).</li>
+          <li><strong>Incompatibilidade Polar Direta:</strong> Falham severamente ao tentar representar sistemas que apresentem forte assimetria de carga ou ligações de hidrogênio (ex: álcool + água), a menos que sejam acopladas a regras de mistura avançadas baseadas em gᴱ.</li>
         </ul>`
     }
   },
