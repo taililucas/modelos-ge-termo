@@ -681,15 +681,18 @@ const MODELS_DETAIL = {
   },
   wilson:{
     name:"Wilson", tag:"Modelo de gᴱ · Composição local",
-    pill:"Padrão-ouro para VLE Polar",
+    pill:"Composição Local · 2 parâmetros",
     accent:"#3d7a5a",
     tabs:{
       "Equações e Fundamentos":`
-        <p class="section-label">Energia de Gibbs em excesso</p>
-        <div class="eq-block"><i>g</i><sup>E</sup>/RT = −Σ<sub>i</sub> <i>x</i><sub>i</sub> ln(Σ<sub>j</sub> <i>x</i><sub>j</sub>Λ<sub>ij</sub>)</div>
-        <p class="section-label">Coeficiente de atividade (binário)</p>
-        <div class="eq-block">ln <i>γ</i><sub>1</sub> = −ln(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) + <i>x</i><sub>2</sub>[Λ<sub>12</sub>/(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) − Λ<sub>21</sub>/(<i>x</i><sub>2</sub>+Λ<sub>21</sub><i>x</i><sub>1</sub>)]</div>
-        <p class="ref-note">Parâmetro cruzado: Λ<sub>ij</sub> = (V<sub>j</sub><sup>L</sup>/V<sub>i</sub><sup>L</sup>) exp[−(λ<sub>ij</sub>−λ<sub>ii</sub>)/RT]. Os parâmetros a serem ajustados experimentalmente são as diferenças de energia de interação (λ<sub>ij</sub>−λ<sub>ii</sub>).</p>`,
+        <p class="section-label">Energia de Gibbs em excesso (Mistura Binária)</p>
+        <div class="eq-block"><i>g</i><sup>E</sup>/RT = − <i>x</i><sub>1</sub> ln(<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub>Λ<sub>12</sub>) − <i>x</i><sub>2</sub> ln(<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub>Λ<sub>21</sub>)</div>
+        <p class="section-label">Coeficientes de atividade (Binários)</p>
+        <div class="eq-block" style="font-size: 1.15rem;">
+          ln <i>γ</i><sub>1</sub> = − ln(<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub>Λ<sub>12</sub>) + <i>x</i><sub>2</sub> [ Λ<sub>12</sub>/(<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub>Λ<sub>12</sub>) − Λ<sub>21</sub>/(<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub>Λ<sub>21</sub>) ]<br><br>
+          ln <i>γ</i><sub>2</sub> = − ln(<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub>Λ<sub>21</sub>) − <i>x</i><sub>1</sub> [ Λ<sub>12</sub>/(<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub>Λ<sub>12</sub>) − Λ<sub>21</sub>/(<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub>Λ<sub>21</sub>) ]
+        </div>
+        <p class="ref-note">Parâmetro cruzado: Λ<sub>ij</sub> = (V<sub>j</sub><sup>L</sup>/V<sub>i</sub><sup>L</sup>) exp[−(λ<sub>ij</sub>−λ<sub>ii</sub>)/RT]. Os parâmetros a serem ajustados experimentalmente são as diferenças de energia (λ<sub>ij</sub>−λ<sub>ii</sub>).</p>`,
       "Aplicação":`
         <p class="prose">A equação de Wilson é o <strong>padrão-ouro histórico</strong> e a escolha preferencial para o cálculo de VLE em misturas de líquidos polares que são <strong>completamente miscíveis</strong>.</p>
         <ul class="dot-list">
@@ -714,11 +717,14 @@ const MODELS_DETAIL = {
     accent:"#806040",
     tabs:{
       "Equações e Fundamentos":`
-        <p class="section-label">Energia de Gibbs em excesso</p>
-        <div class="eq-block"><i>g</i><sup>E</sup>/RT = Σ<sub>i</sub> <i>x</i><sub>i</sub> [ (Σ<sub>j</sub>τ<sub>ji</sub>G<sub>ji</sub><i>x</i><sub>j</sub>) / (Σ<sub>k</sub>G<sub>ki</sub><i>x</i><sub>k</sub>) ]</div>
-        <p class="section-label">Coeficiente de atividade (binário)</p>
-        <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [ τ<sub>21</sub>(G<sub>21</sub>/(<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>G<sub>21</sub>))<sup>2</sup> + τ<sub>12</sub>G<sub>12</sub>/(<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub>G<sub>12</sub>)<sup>2</sup> ]</div>
-        <p class="ref-note">Onde: G<sub>ij</sub> = exp(−α<sub>ij</sub>τ<sub>ij</sub>) · τ<sub>ij</sub> = (g<sub>ij</sub>−g<sub>jj</sub>)/RT</p>`,
+        <p class="section-label">Energia de Gibbs em excesso (Mistura Binária)</p>
+        <div class="eq-block"><i>g</i><sup>E</sup>/RT = <i>x</i><sub>1</sub><i>x</i><sub>2</sub> [ (<i>τ</i><sub>21</sub><i>G</i><sub>21</sub> / (<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub><i>G</i><sub>21</sub>)) + (<i><i>τ</i></i><sub>12</sub><i>G</i><sub>12</sub> / (<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub><i>G</i><sub>12</sub>)) ]</div>
+        <p class="section-label">Coeficientes de atividade (Binários)</p>
+        <div class="eq-block" style="font-size: 1.15rem;">
+          ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [ <i>τ</i><sub>21</sub> (<i>G</i><sub>21</sub> / (<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub><i>G</i><sub>21</sub>))<sup>2</sup> + (<i>τ</i><sub>12</sub><i>G</i><sub>12</sub> / (<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub><i>G</i><sub>12</sub>)<sup>2</sup>) ]<br><br>
+          ln <i>γ</i><sub>2</sub> = <i>x</i><sub>1</sub><sup>2</sup> [ <i>τ</i><sub>12</sub> (<i>G</i><sub>12</sub> / (<i>x</i><sub>2</sub> + <i>x</i><sub>1</sub><i>G</i><sub>12</sub>))<sup>2</sup> + (<i>τ</i><sub>21</sub><i>G</i><sub>21</sub> / (<i>x</i><sub>1</sub> + <i>x</i><sub>2</sub><i>G</i><sub>21</sub>)<sup>2</sup>) ]
+        </div>
+        <p class="ref-note">Onde: G<sub>12</sub> = exp(−α<sub>12</sub>τ<sub>12</sub>) · G<sub>21</sub> = exp(−α<sub>12</sub>τ<sub>21</sub>) · τ<sub>12</sub> = (g<sub>12</sub>−g<sub>22</sub>)/RT · τ<sub>21</sub> = (g<sub>21</sub>−g<sub>11</sub>)/RT</p>`,
       "Aplicação":`
         <p class="prose">O NRTL (Non-Random Two-Liquid) é o modelo correlativo mais <strong>versátil e amplamente utilizado</strong> na indústria para sistemas polares fortemente não-ideais.</p>
         <ul class="dot-list">
@@ -732,10 +738,10 @@ const MODELS_DETAIL = {
           α ≈ 0,47 → compostos fortemente auto-associativos (ex: fluorcarbonetos)
         </div>`,
       "Características":`
-        <p class="prose">Proposto por Renon e Prausnitz (1968), o grande trunfo do modelo é o parâmetro de <strong>não-aleatoriedade (α<sub>ij</sub>)</strong>. Ele corrige a falha do modelo de Wilson ao assumir que a mistura local nunca é totalmente aleatória devido às diferentes energias de repulsão/atração. É exatamente esse parâmetro que permite à curva de energia sofrer inflexões matemáticas e prever a separação de fases (LLE).</p>`,
+        <p class="prose">Proposto por Renon e Prausnitz (1968), o grande trunfo do modelo é o parâmetro de <strong>não-aleatoriedade (α<sub>12</sub>)</strong>. Ele corrige a falha do modelo de Wilson ao assumir que a mistura local nunca é totalmente aleatória devido às diferentes energias de repulsão/atração. É exatamente esse parâmetro que permite à curva de energia sofrer inflexões matemáticas e prever a separação de fases (LLE).</p>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>Alta densidade paramétrica:</strong> Exige 3 parâmetros ajustáveis por par binário (τ<sub>ij</sub>, τ<sub>ji</sub> e α<sub>ij</sub>), o que demanda dados experimentais abundantes para uma regressão confiável.</li>
+          <li><strong>Alta densidade paramétrica:</strong> Exige 3 parâmetros ajustáveis por par binário (τ<sub>12</sub>, τ<sub>21</sub> e α<sub>12</sub>), o que demanda dados experimentais abundantes para uma regressão confiável.</li>
           <li>Em simuladores, deixar o α livre para otimização costuma gerar múltiplos mínimos locais (erros de convergência). Por isso, frequentemente fixa-se α = 0,3.</li>
           <li>Não contabiliza intrinsecamente diferenças radicais de tamanho molecular (para isso, o UNIQUAC é superior).</li>
         </ul>`
