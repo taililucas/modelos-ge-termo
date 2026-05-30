@@ -623,35 +623,32 @@ const MODELS_DETAIL = {
     pill:"Correlativo · 1 ou 2 parâmetros",
     accent:"#8c5e5e",
     tabs:{
-      "Equações":`
+      "Equações e Fundamentos":`
         <p class="section-label">Energia de Gibbs em excesso</p>
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = <i>x</i><sub>1</sub><i>x</i><sub>2</sub>(<i>A</i><sub>21</sub><i>x</i><sub>1</sub> + <i>A</i><sub>12</sub><i>x</i><sub>2</sub>)</div>
         <p class="section-label">Coeficientes de atividade</p>
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup>[<i>A</i><sub>12</sub> + 2(<i>A</i><sub>21</sub>−<i>A</i><sub>12</sub>)<i>x</i><sub>1</sub>]<br><br>ln <i>γ</i><sub>2</sub> = <i>x</i><sub>1</sub><sup>2</sup>[<i>A</i><sub>21</sub> + 2(<i>A</i><sub>12</sub>−<i>A</i><sub>21</sub>)<i>x</i><sub>2</sub>]</div>
         <p class="ref-note">Caso simétrico (solução estritamente regular): A<sub>12</sub> = A<sub>21</sub> = A → g<sup>E</sup>/RT = Ax<sub>1</sub>x<sub>2</sub></p>`,
       "Aplicação":`
-        <p class="prose">Margules é a escolha natural quando se busca <strong>correlação rápida</strong> para sistemas simples - moléculas de tamanho, forma e natureza química semelhantes com desvios moderados da idealidade.</p>
+        <p class="prose">Margules é a escolha natural quando se busca <strong>correlação rápida</strong> para sistemas simples — moléculas de tamanho, forma e natureza química semelhantes com desvios moderados da idealidade.</p>
         <p class="subsection">Sistemas indicados</p>
         <ul class="dot-list">
-          <li><strong>Hidrocarbonetos de estrutura próxima:</strong> benzeno + tolueno, n-hexano + n-heptano - desvios pequenos, 1 ou 2 parâmetros suficientes.</li>
-          <li><strong>Estimativa de γ<sub>i</sub><sup>∞</sup>:</strong> ln γ<sub>1</sub><sup>∞</sup> = A<sub>12</sub> e ln γ<sub>2</sub><sup>∞</sup> = A<sub>21</sub> - dois pontos de diluição infinita determinam o modelo completo.</li>
-          <li>Triagem rápida de azeótropos e ponto de partida antes de modelos mais sofisticados.</li>
+          <li><strong>Hidrocarbonetos de estrutura próxima:</strong> benzeno + tolueno, n-hexano + n-heptano — desvios pequenos, 1 ou 2 parâmetros suficientes.</li>
+          <li><strong>Estimativa de γ<sub>i</sub><sup>∞</sup>:</strong> ln γ<sub>1</sub><sup>∞</sup> = A<sub>12</sub> e ln γ<sub>2</sub><sup>∞</sup> = A<sub>21</sub> — dois pontos de diluição infinita determinam o modelo completo.</li>
+          <li>Triagem rápida de azeótropos e ponto de partida analítico em simuladores.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Margules não deriva de nenhuma teoria molecular - é o <strong>truncamento de uma expansão de Redlich-Kister</strong> em potências de (x<sub>1</sub> − x<sub>2</sub>). A forma de 2 parâmetros retém apenas os dois primeiros termos, satisfazendo automaticamente g<sup>E</sup> = 0 para os componentes puros e a equação de Gibbs-Duhem.</p>
+        <p class="prose">Margules não deriva de nenhuma teoria molecular — é o <strong>truncamento de uma expansão empírica de Redlich-Kister</strong> em potências de (x<sub>1</sub> − x<sub>2</sub>). A forma de 2 parâmetros retém apenas os dois primeiros termos, satisfazendo automaticamente as condições de contorno (g<sup>E</sup> = 0 para os puros) e a restrição termodinâmica de Gibbs-Duhem.</p>
         <ul class="dot-list">
-          <li>Puramente empírico - parâmetros sem interpretação molecular direta.</li>
-          <li>Parâmetros ajustados por regressão de dados P-x-y ou T-x-y.</li>
-          <li>Dependência com T não trivial: A<sub>ij</sub>(T) deve ser medida em múltiplas temperaturas.</li>
+          <li>Parâmetros ajustados empiricamente por regressão linear/não-linear de dados P-x-y ou T-x-y.</li>
+          <li>A dependência com a temperatura não está inclusa na equação: A<sub>ij</sub>(T) deve ser medida e ajustada experimentalmente para cada T.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>LLE impreciso:</strong> embora matematicamente possa prever separação de fases, a forma da equação gera curvas binodais irreais. Para LLE, NRTL ou UNIQUAC são indispensáveis.</li>
-          <li><strong>Falha em moléculas assimétricas:</strong> volumes molares muito diferentes → erros sistemáticos.</li>
-          <li>Inadequado para misturas com ligação de hidrogênio forte.</li>
-          <li>Sem capacidade preditiva - sempre requer dados experimentais do par específico.</li>
-        </ul>
-        <div class="highlight-box"><strong>Regra prática:</strong> quando |A<sub>12</sub>| ou |A<sub>21</sub>| > 2, o sistema exibirá instabilidade e separação de fases.</div>`
+          <li><strong>LLE impreciso:</strong> embora matematicamente possa prever separação de fases (se A > 2), a forma parabólica da equação gera curvas binodais irreais. Para LLE, NRTL ou UNIQUAC são indispensáveis.</li>
+          <li><strong>Falha em moléculas assimétricas:</strong> volumes molares muito diferentes geram erros sistemáticos severos.</li>
+          <li>Totalmente inadequado para misturas com ligações de hidrogênio dominantes.</li>
+        </ul>`
     }
   },
   vanlaar:{
@@ -659,58 +656,55 @@ const MODELS_DETAIL = {
     pill:"Correlativo · 2 parâmetros",
     accent:"#4a7a8c",
     tabs:{
-      "Equações":`
+      "Equações e Fundamentos":`
         <p class="section-label">Energia de Gibbs em excesso</p>
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = (<i>A</i><sub>12</sub><i>A</i><sub>21</sub><i>x</i><sub>1</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub> + <i>A</i><sub>21</sub><i>x</i><sub>2</sub>)</div>
         <p class="section-label">Coeficientes de atividade</p>
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>A</i><sub>12</sub>/[1 + (<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)/(<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)]<sup>2</sup><br><br>ln <i>γ</i><sub>2</sub> = <i>A</i><sub>21</sub>/[1 + (<i>A</i><sub>21</sub><i>x</i><sub>2</sub>)/(<i>A</i><sub>12</sub><i>x</i><sub>1</sub>)]<sup>2</sup></div>
-        <p class="ref-note">A<sub>12</sub> = ln γ<sub>1</sub><sup>∞</sup> · A<sub>21</sub> = ln γ<sub>2</sub><sup>∞</sup> - duas medidas de diluição infinita determinam o modelo.</p>`,
+        <p class="ref-note">A<sub>12</sub> = ln γ<sub>1</sub><sup>∞</sup> e A<sub>21</sub> = ln γ<sub>2</sub><sup>∞</sup> — os parâmetros representam matematicamente os coeficientes de atividade em diluição infinita.</p>`,
       "Aplicação":`
-        <p class="prose">Van Laar é preferível ao Margules quando há <strong>assimetria pronunciada</strong> entre os componentes - como pressões de vapor muito diferentes ou tamanhos moleculares moderadamente distintos.</p>
+        <p class="prose">A equação de van Laar é altamente recomendada para sistemas que apresentam <strong>assimetria pronunciada</strong> entre os componentes — como moléculas de tamanhos diferentes ou pressões de vapor muito distantes.</p>
         <ul class="dot-list">
-          <li>Sistemas com desvios positivos assimétricos da Lei de Raoult.</li>
-          <li>Parametrização rápida a partir de dois valores de γ<sub>i</sub><sup>∞</sup> (cromatografia de gás).</li>
-          <li>Estimativa algébrica de azeótropos binários - forma fechada facilita o cálculo.</li>
+          <li>Sistemas com desvios positivos consistentes da Lei de Raoult.</li>
+          <li>Parametrização extremamente rápida a partir de dois pontos de diluição infinita (frequentemente obtidos por cromatografia gasosa).</li>
+          <li>Cálculos algébricos analíticos de azeótropos binários, devido à sua forma matemática fechada e simétrica em raízes.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Derivado historicamente da equação de estado de van der Waals - uma das primeiras tentativas de fundamentar termodinamicamente o comportamento de misturas. A forma racional em x introduz uma distorção assimétrica em g<sup>E</sup> controlada pela razão A<sub>12</sub>/A<sub>21</sub>, que na teoria original se relacionaria à razão de volumes molares V<sub>1</sub>/V<sub>2</sub>.</p>`,
+        <p class="prose">Historicamente, foi a primeira tentativa de derivar um modelo de atividade a partir de uma equação de estado cúbica (van der Waals). A genialidade do modelo está em acomodar as diferenças de tamanho molecular introduzindo o conceito de "frações volumétricas efetivas", que geram a distorção assimétrica na curva de g<sup>E</sup>.</p>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>Curvas monotônicas:</strong> ln γ<sub>i</sub> não pode apresentar máximos, mínimos ou inversão de sinal - falha em sistemas halogenados complexos.</li>
-          <li><strong>Hipótese de mistura aleatória:</strong> ignora composição local - inadequado para fluidos fortemente polares.</li>
-          <li>Não prevê LLE.</li>
-          <li>Extensão a multicomponentes inconsistente - limitado a binários na prática.</li>
+          <li><strong>Hipótese de mistura aleatória:</strong> O modelo assume que a entropia de mistura é perfeitamente igual à ideal. Ele ignora completamente a organização molecular local, falhando gravemente em sistemas fortemente polares (ex: álcool + água).</li>
+          <li><strong>Curvas monotônicas:</strong> A derivada matemática não permite que ln γ<sub>i</sub> apresente máximos ou mínimos locais ao longo da composição, o que falha em sistemas complexos halogenados.</li>
+          <li>A extensão a sistemas multicomponentes (ternários em diante) carece de rigor teórico e costuma gerar inconsistências termodinâmicas.</li>
         </ul>`
     }
   },
   wilson:{
     name:"Wilson", tag:"Modelo de gᴱ · Composição local",
-    pill:"Composição Local · 2 parâmetros",
+    pill:"Padrão-ouro para VLE Polar",
     accent:"#3d7a5a",
     tabs:{
-      "Equações":`
+      "Equações e Fundamentos":`
         <p class="section-label">Energia de Gibbs em excesso</p>
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = −Σ<sub>i</sub> <i>x</i><sub>i</sub> ln(Σ<sub>j</sub> <i>x</i><sub>j</sub>Λ<sub>ij</sub>)</div>
         <p class="section-label">Coeficiente de atividade (binário)</p>
         <div class="eq-block">ln <i>γ</i><sub>1</sub> = −ln(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) + <i>x</i><sub>2</sub>[Λ<sub>12</sub>/(<i>x</i><sub>1</sub>+Λ<sub>12</sub><i>x</i><sub>2</sub>) − Λ<sub>21</sub>/(<i>x</i><sub>2</sub>+Λ<sub>21</sub><i>x</i><sub>1</sub>)]</div>
-        <p class="ref-note">Λ<sub>ij</sub> = (V<sub>j</sub><sup>L</sup>/V<sub>i</sub><sup>L</sup>) exp[−(λ<sub>ij</sub>−λ<sub>ii</sub>)/RT] · parâmetros: diferenças de energia de interação λ<sub>ij</sub>−λ<sub>ii</sub></p>`,
+        <p class="ref-note">Parâmetro cruzado: Λ<sub>ij</sub> = (V<sub>j</sub><sup>L</sup>/V<sub>i</sub><sup>L</sup>) exp[−(λ<sub>ij</sub>−λ<sub>ii</sub>)/RT]. Os parâmetros a serem ajustados experimentalmente são as diferenças de energia de interação (λ<sub>ij</sub>−λ<sub>ii</sub>).</p>`,
       "Aplicação":`
-        <p class="prose">Wilson é a escolha natural para <strong>misturas polares completamente miscíveis</strong>, especialmente onde ligações de hidrogênio governam o comportamento - etanol + água, acetona + água, álcoois + hidrocarbonetos (miscíveis).</p>
+        <p class="prose">A equação de Wilson é o <strong>padrão-ouro histórico</strong> e a escolha preferencial para o cálculo de VLE em misturas de líquidos polares que são <strong>completamente miscíveis</strong>.</p>
         <ul class="dot-list">
-          <li>Destilação azeotrópica e extrativa de sistemas homogêneos - padrão histórico.</li>
-          <li>Extrapolação de temperatura confiável via dependência explícita Λ<sub>ij</sub>(T).</li>
-          <li><strong>Extensão multicomponente sem parâmetros adicionais:</strong> apenas N(N−1) parâmetros binários descrevem completamente uma mistura de N componentes.</li>
+          <li>Sistemas dominados por ligações de hidrogênio (ex: misturas de água com etanol, metanol, acetona).</li>
+          <li>Design de colunas de destilação azeotrópica e extrativa para sistemas homogêneos.</li>
+          <li>É excelente para extrapolação isobárica (amplas variações de temperatura na coluna), pois a dependência térmica já está embutida nativamente na fórmula de Λ<sub>ij</sub>.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Marco histórico de 1964: introduziu o conceito de <strong>composição local</strong> - a concentração ao redor de uma molécula central difere da composição global por conta das diferenças de energia de interação. Esse conceito fundamenta diretamente o NRTL e o UNIQUAC.</p>
-        <div class="eq-block"><i>x</i><sub>21</sub>/<i>x</i><sub>11</sub> = (<i>x</i><sub>2</sub>/<i>x</i><sub>1</sub>)·exp[−(λ<sub>12</sub>−λ<sub>11</sub>)/<i>RT</i>]</div>
-        <p class="prose">Os parâmetros têm significado físico direto: (λ<sub>12</sub>−λ<sub>11</sub>) é a diferença entre a energia de interação cruzada 1-2 e a homointeração 1-1.</p>`,
+        <p class="prose">Publicada em 1964, a equação de Wilson quebrou o paradigma clássico da "mistura aleatória". Ela introduziu o conceito revolucionário de <strong>composição local</strong>: a ideia de que a concentração de moléculas B ao redor de uma molécula A é diferente da concentração global do líquido, devido às forças de atração/repulsão relativas. Os parâmetros (λ<sub>ij</sub>−λ<sub>ii</sub>) têm real significado físico de energia.</p>
+        <p class="prose"><strong>Vantagem Multicomponente:</strong> Diferente de Margules ou van Laar, com a equação de Wilson apenas os parâmetros binários obtidos de dados de pares são necessários para descrever perfeitamente o equilíbrio de misturas com N componentes.</p>`,
       "Limitações":`
-        <div class="highlight-box"><strong>Limitação crítica e incontornável:</strong> Wilson não pode prever LLE. A função g<sup>E</sup> é <em>sempre</em> estritamente convexa por construção - nenhuma combinação de parâmetros gera instabilidade de fase. Nunca use Wilson em sistemas parcialmente miscíveis.</div>
+        <div class="highlight-box"><strong>Limitação absoluta em LLE:</strong> A função matemática de Wilson é estritamente convexa (sua segunda derivada em relação a x nunca atinge valores negativos). Isso significa que, independentemente dos parâmetros utilizados, <strong>ela nunca poderá prever a separação de fases líquidas</strong>. É um erro grave usá-la em sistemas que não sejam totalmente miscíveis.</div>
         <ul class="dot-list">
-          <li>Requer V<sub>i</sub><sup>L</sup> de fontes externas (tabelas, correlação de Rackett).</li>
-          <li>Não aplicável diretamente a polímeros.</li>
-          <li>Sem capacidade preditiva - parâmetros dependem de dados experimentais do par.</li>
+          <li>Requer a inserção manual dos volumes molares líquidos puros (V<sub>i</sub><sup>L</sup>) para rodar o modelo, que devem ser obtidos por equações empíricas (ex: correlação de Rackett) em simuladores comerciais.</li>
+          <li>Inadequado para misturas contendo macromoléculas ou polímeros de cadeias longas.</li>
         </ul>`
     }
   },
