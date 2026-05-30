@@ -915,27 +915,36 @@ const MODELS_DETAIL = {
     }
   },
   regras_mistura:{
-    name:"Regras de Mistura baseadas em gᴱ", tag:"Modelo Híbrido · CEoS + gᴱ",
+    name:"Regras de Mistura Avançadas", tag:"Modelo Híbrido · CEoS + gᴱ",
     pill:"SCMR · MHV1 · Wong-Sandler",
     accent:"#4a5a6a",
     tabs:{
-      "Conceito":`
-        <p class="section-label">Integração de gᴱ no parâmetro atrativo da CEoS</p>
-        <div class="eq-block"><i>a</i> = <i>b</i>[Σ<sub>i</sub><i>x</i><sub>i</sub>(<i>a</i><sub>i</sub>/<i>b</i><sub>i</sub>) + <i>g</i><sup>E</sup>/<i>C*</i>]</div>
-        <p class="ref-note">C* é uma constante numérica que depende da regra de mistura específica utilizada.</p>`,
+      "Equações e Fundamentos":`
+        <p class="section-label">Integração CEoS / gᴱ (Regra de Wong-Sandler)</p>
+        <p class="prose">Para permitir que as equações cúbicas modelem misturas polares altamente não-ideais, o parâmetro cruzado de atração (<i>a<sub>m</sub></i>) não pode ser obtido por médias quadráticas simples. A Regra de Wong-Sandler (1992) iguala a energia de Gibbs em excesso na pressão infinita (calculada pela CEoS) ao valor calculado por um modelo de atividade (como NRTL):</p>
+        <div class="eq-block"><i>a<sub>m</sub></i>/<i>RT</i> = <i>b<sub>m</sub></i> [ Σ<sub>i</sub><i>x</i><sub>i</sub>(<i>a</i><sub>i</sub>/<i>b</i><sub>i</sub><i>RT</i>) + <i>g</i><sup>E</sup><sub>(P=∞)</sub>/(<i>C*RT</i>) ]</div>
+        <p class="section-label">Regra para o co-volume (b)</p>
+        <div class="eq-block"><i>b<sub>m</sub></i> = [ Σ<sub>i</sub>Σ<sub>j</sub> <i>x</i><sub>i</sub><i>x</i><sub>j</sub>(<i>b</i> − <i>a</i>/<i>RT</i>)<sub>ij</sub> ] / [ 1 − Σ<sub>i</sub><i>x</i><sub>i</sub>(<i>a</i><sub>i</sub>/<i>b</i><sub>i</sub><i>RT</i>) − <i>g</i><sup>E</sup><sub>(P=∞)</sub>/(<i>C*RT</i>) ]</div>
+        <p class="ref-note">Onde C* é uma constante numérica da CEoS (C* = -0.62322 para PR e -0.69315 para SRK). O termo cruzado (<i>b</i> − <i>a</i>/<i>RT</i>)<sub>ij</sub> utiliza um parâmetro empírico <i>k<sub>ij</sub></i>.</p>`,
       "Aplicação":`
-        <p class="prose">Para <strong>sistemas polares em alta pressão</strong>, combinar uma CEoS com uma regra de mistura baseada em g<sup>E</sup> é a estratégia padrão - permite usar os parâmetros já existentes de NRTL ou UNIQUAC dentro de uma equação de estado válida em ampla faixa de pressão.</p>
+        <p class="prose">Essa classe de modelos é a ferramenta definitiva para o engenheiro quando o sistema envolve <strong>compostos fortemente polares</strong> e opera em regimes de <strong>alta pressão e/ou temperatura</strong> (onde a fase vapor está longe de ser gás ideal).</p>
         <ul class="dot-list">
-          <li><strong>SCMR / Wong-Sandler:</strong> conecta o parâmetro a da CEoS ao g<sup>E</sup> de modelos como NRTL ou UNIQUAC.</li>
-          <li><strong>MHV1 / MHV2:</strong> regras de volume molar modificado - usadas com UNIFAC para caráter preditivo (ex.: PSRK).</li>
+          <li>Separação de misturas azeotrópicas sob pressão não-atmosférica.</li>
+          <li>Recuperação de solventes orgânicos em fluidos supercríticos (ex: extração com CO₂ supercrítico + etanol).</li>
+          <li>Plantas químicas operando próximas às condições críticas dos componentes envolvidos.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Essas abordagens permitem reutilizar parâmetros de g<sup>E</sup> existentes na literatura dentro de equações de estado - combinando a robustez das CEoS em alta pressão com a precisão dos modelos de atividade para sistemas polares.</p>`,
+        <p class="prose">Ao acoplar a flexibilidade de um modelo g<sup>E</sup> com a abrangência de estado de uma equação cúbica, essas regras de mistura representam o elo perfeito (uma "ponte") entre as duas maiores famílias da termodinâmica fenomenológica.</p>
+        <ul class="dot-list">
+          <li><strong>MHV1/MHV2 (Michelsen):</strong> Equacionam g<sup>E</sup> na pressão zero. A MHV1 é de primeira ordem e funciona bem até pressões moderadas (usada no PSRK).</li>
+          <li><strong>Wong-Sandler (WS):</strong> Iguala g<sup>E</sup> a uma pressão infinita. Garante que o limite de segunda derivada na vizinhança do segundo coeficiente virial seja respeitado teoricamente.</li>
+          <li><strong>SCMR (Staudt & Soares):</strong> Regra autoconsistente mais moderna que elimina problemas teóricos das anteriores na transição de baixas para altas pressões.</li>
+        </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Algumas formulações sofrem de inconsistência na transição para baixas densidades (limite de gás ideal).</li>
-          <li>Custo computacional maior que CEoS com regras clássicas.</li>
-          <li>Herdam as limitações do modelo de g<sup>E</sup> embutido (ex.: se usar UNIFAC, herda a incapacidade de distinguir isômeros).</li>
+          <li><strong>Problema de Michelsen:</strong> Em regras de mistura antigas que usam pressão infinita como referência (como Wong-Sandler), a transição matemática para baixas densidades (limite de gás ideal) pode gerar inconsistências termodinâmicas no cálculo da energia livre residual.</li>
+          <li><strong>Custo Paramétrico:</strong> Exigem que você forneça os parâmetros críticos (T<sub>c</sub>, P<sub>c</sub>, ω), o parâmetro de mistura clássico (k<sub>ij</sub>) e ainda os parâmetros do modelo de atividade embutido (ex: τ<sub>12</sub>, τ<sub>21</sub> e α do NRTL).</li>
+          <li>Alto tempo de processamento computacional em simulações robustas devido à não linearidade severa da função do co-volume na raiz cúbica.</li>
         </ul>`
     }
   },
