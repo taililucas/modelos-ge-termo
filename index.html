@@ -719,33 +719,31 @@ const MODELS_DETAIL = {
     pill:"Versátil · VLE & LLE · 3 parâmetros",
     accent:"#806040",
     tabs:{
-      "Equações":`
+      "Equações e Fundamentos":`
         <p class="section-label">Energia de Gibbs em excesso</p>
-        <div class="eq-block"><i>g</i><sup>E</sup>/RT = Σ<sub>i</sub> <i>x</i><sub>i</sub>[(Σ<sub>j</sub>τ<sub>ji</sub>G<sub>ji</sub><i>x</i><sub>j</sub>)/(Σ<sub>k</sub>G<sub>ki</sub><i>x</i><sub>k</sub>)]</div>
+        <div class="eq-block"><i>g</i><sup>E</sup>/RT = Σ<sub>i</sub> <i>x</i><sub>i</sub> [ (Σ<sub>j</sub>τ<sub>ji</sub>G<sub>ji</sub><i>x</i><sub>j</sub>) / (Σ<sub>k</sub>G<sub>ki</sub><i>x</i><sub>k</sub>) ]</div>
         <p class="section-label">Coeficiente de atividade (binário)</p>
-        <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup>[τ<sub>21</sub>(G<sub>21</sub>/(<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>G<sub>21</sub>))<sup>2</sup> + τ<sub>12</sub>G<sub>12</sub>/(<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub>G<sub>12</sub>)<sup>2</sup>]</div>
-        <p class="ref-note">G<sub>ij</sub> = exp(−α<sub>ij</sub>τ<sub>ij</sub>) · τ<sub>ij</sub> = (g<sub>ij</sub>−g<sub>jj</sub>)/RT · α típico: 0,2–0,47</p>`,
+        <div class="eq-block">ln <i>γ</i><sub>1</sub> = <i>x</i><sub>2</sub><sup>2</sup> [ τ<sub>21</sub>(G<sub>21</sub>/(<i>x</i><sub>1</sub>+<i>x</i><sub>2</sub>G<sub>21</sub>))<sup>2</sup> + τ<sub>12</sub>G<sub>12</sub>/(<i>x</i><sub>2</sub>+<i>x</i><sub>1</sub>G<sub>12</sub>)<sup>2</sup> ]</div>
+        <p class="ref-note">Onde: G<sub>ij</sub> = exp(−α<sub>ij</sub>τ<sub>ij</sub>) · τ<sub>ij</sub> = (g<sub>ij</sub>−g<sub>jj</sub>)/RT</p>`,
       "Aplicação":`
-        <p class="prose">O NRTL é o modelo correlativo mais <strong>versátil</strong> - padrão em simuladores industriais (Aspen Plus, HYSYS, PRO/II) para sistemas polares complexos com e sem separação de fases.</p>
+        <p class="prose">O NRTL (Non-Random Two-Liquid) é o modelo correlativo mais <strong>versátil e amplamente utilizado</strong> na indústria para sistemas polares fortemente não-ideais.</p>
         <ul class="dot-list">
-          <li><strong>VLE + LLE simultâneos:</strong> extração líquido-líquido, azeótropos heterogêneos, diagramas ternários com duas fases.</li>
-          <li>Soluções eletrolíticas via extensão eNRTL (Chen & Evans, 1986).</li>
-          <li>Destilação extrativa - triéticos com solvente seletor.</li>
+          <li><strong>O Padrão para LLE:</strong> Diferente de Wilson, o NRTL foi modelado especificamente para ser capaz de prever <strong>Equilíbrio Líquido-Líquido</strong> (separação em duas fases) e VLE simultaneamente.</li>
+          <li>Excelente para destilação extrativa, azeotrópica heterogênea e processos de extração com solventes.</li>
         </ul>
-        <p class="subsection">Guia para o parâmetro α</p>
+        <p class="subsection">Guia para o parâmetro empírico α</p>
         <div class="highlight-box">
-          α ≈ 0,20 → sistemas aquosos com ligação de hidrogênio forte<br>
-          α ≈ 0,30 → valor padrão (hidrocarbonetos, álcoois, éteres)<br>
-          α ≈ 0,47 → compostos apolares saturados
+          α ≈ 0,20 → misturas aquosas orgânicas e sistemas com LLE<br>
+          α ≈ 0,30 → valor padrão (álcoois, éteres, sistemas polares não-aquosos)<br>
+          α ≈ 0,47 → compostos fortemente auto-associativos (ex: fluorcarbonetos)
         </div>`,
       "Características":`
-        <p class="prose">Renon & Prausnitz (1968) estenderam Wilson introduzindo o <strong>parâmetro de não-aleatoriedade α</strong>: corrige a hipótese implícita de Wilson de que a distribuição local de Boltzmann é sempre aleatória. Para α > 0, diferenças energéticas exercem maior influência sobre o agrupamento molecular local, permitindo que g<sup>E</sup> desenvolva regiões de convexidade - condição matemática necessária para instabilidade de fase e LLE.</p>`,
+        <p class="prose">Proposto por Renon e Prausnitz (1968), o grande trunfo do modelo é o parâmetro de <strong>não-aleatoriedade (α<sub>ij</sub>)</strong>. Ele corrige a falha do modelo de Wilson ao assumir que a mistura local nunca é totalmente aleatória devido às diferentes energias de repulsão/atração. É exatamente esse parâmetro que permite à curva de energia sofrer inflexões matemáticas e prever a separação de fases (LLE).</p>`,
       "Limitações":`
         <ul class="dot-list">
-          <li><strong>3 parâmetros por par binário:</strong> mais dados necessários; múltiplos mínimos locais na regressão.</li>
-          <li>α frequentemente fixado em 0,3 para estabilidade algorítmica - perde flexibilidade em sistemas atípicos.</li>
-          <li>Extrapolação de T limitada fora da faixa de ajuste.</li>
-          <li>Não recomendado para polímeros sem extensões específicas.</li>
+          <li><strong>Alta densidade paramétrica:</strong> Exige 3 parâmetros ajustáveis por par binário (τ<sub>ij</sub>, τ<sub>ji</sub> e α<sub>ij</sub>), o que demanda dados experimentais abundantes para uma regressão confiável.</li>
+          <li>Em simuladores, deixar o α livre para otimização costuma gerar múltiplos mínimos locais (erros de convergência). Por isso, frequentemente fixa-se α = 0,3.</li>
+          <li>Não contabiliza intrinsecamente diferenças radicais de tamanho molecular (para isso, o UNIQUAC é superior).</li>
         </ul>`
     }
   },
@@ -754,31 +752,31 @@ const MODELS_DETAIL = {
     pill:"Tamanho & Forma · 2 parâmetros",
     accent:"#603d80",
     tabs:{
-      "Equações":`
-        <p class="section-label">Estrutura modular - duas contribuições</p>
+      "Equações e Fundamentos":`
+        <p class="section-label">Estrutura modular (Combinatória + Residual)</p>
         <div class="eq-block"><i>g</i><sup>E</sup>/RT = (g<sup>E</sup>/RT)<sub>comb</sub> + (g<sup>E</sup>/RT)<sub>res</sub></div>
+        <p class="section-label">Coeficiente de Atividade</p>
         <div class="eq-block">ln <i>γ</i><sub>i</sub> = ln <i>γ</i><sub>i</sub><sup>C</sup> + ln <i>γ</i><sub>i</sub><sup>R</sup></div>
-        <p class="ref-note">τ<sub>ij</sub> = exp[−(u<sub>ij</sub>−u<sub>jj</sub>)/RT] · r<sub>i</sub>, q<sub>i</sub>: parâmetros estruturais tabelados por Bondi (1968)</p>`,
+        <p class="ref-note">τ<sub>ij</sub> = exp[−(u<sub>ij</sub>−u<sub>jj</sub>)/RT] · r<sub>i</sub>, q<sub>i</sub>: parâmetros estruturais tabelados de volume e área (regra de Bondi).</p>`,
       "Aplicação":`
-        <p class="prose">UNIQUAC é preferível quando os componentes diferem substancialmente em <strong>tamanho e forma molecular</strong> - situação em que Wilson e NRTL não representam adequadamente a contribuição entrópica de tamanho.</p>
+        <p class="prose">O UNIQUAC (Universal Quasi-Chemical) é a escolha superior quando a mistura envolve moléculas com <strong>grandes disparidades de tamanho e forma</strong> (ex: misturar etanol com uma longa cadeia de hidrocarboneto ou polímeros).</p>
         <ul class="dot-list">
-          <li>Sistemas com polímeros, proteínas ou moléculas de cadeia longa + solventes.</li>
-          <li>Equilíbrio sólido-líquido (SLE): solubilidade de sólidos cristalinos.</li>
-          <li>VLE e LLE - base sobre a qual o UNIFAC é construído.</li>
+          <li>Predição e correlação de LLE, VLE e Equilíbrio Sólido-Líquido (SLE).</li>
+          <li>Sistemas de misturas polares assimétricas (onde NRTL precisaria forçar muito os parâmetros energéticos).</li>
+          <li>É a fundação teórica matemática sobre a qual o método preditivo UNIFAC foi construído.</li>
         </ul>`,
       "Características":`
-        <p class="prose">Abrams & Prausnitz (1975) separaram g<sup>E</sup> em duas contribuições fisicamente independentes:</p>
+        <p class="prose">Abrams e Prausnitz (1975) revolucionaram a modelagem dividindo o coeficiente de atividade em duas contribuições fisicamente distintas:</p>
         <ul class="dot-list">
-          <li><strong>Combinatorial (entrópica, independente de T):</strong> diferença de tamanho (r) e área superficial (q) das moléculas, calculados por geometria molecular - não precisam ser ajustados.</li>
-          <li><strong>Residual (energética):</strong> interações via τ<sub>ij</sub> aplicados à fração de área superficial θ<sub>i</sub> - fisicamente mais rigoroso que Wilson/NRTL para moléculas de tamanhos diferentes.</li>
+          <li><strong>Combinatória (ln γ<sup>C</sup>):</strong> Contabiliza a entropia de mistura gerada apenas pela diferença geométrica das moléculas (volume <i>r</i> e área <i>q</i>). É puramente preditiva e independente da temperatura.</li>
+          <li><strong>Residual (ln γ<sup>R</sup>):</strong> Avalia as interações entálpicas (forças atrativas) via 2 parâmetros ajustáveis (τ<sub>ij</sub> e τ<sub>ji</sub>), tornando-o mais enxuto de ajustar do que o NRTL.</li>
         </ul>`,
       "Limitações":`
         <ul class="dot-list">
-          <li>Hipótese de rede rígida subestima anisotropia em sistemas aquosos fortemente polares - NRTL tende a ser mais preciso nesses casos.</li>
-          <li>Implementação mais complexa: normalização de Φ<sub>i</sub> e θ<sub>i</sub> requer cuidado.</li>
-          <li>Parte residual ainda correlativa - sem capacidade preditiva sem dados.</li>
+          <li>Exige a consulta de parâmetros puramente estruturais geométricos (<i>r</i> e <i>q</i>) para cada molécula antes mesmo da regressão dos dados, aumentando o trabalho analítico.</li>
+          <li>Em sistemas de pequenas moléculas altamente polares e aquosas (onde o tamanho não é a variável principal), a hipótese teórica de "rede fluida rígida" faz o UNIQUAC performar marginalmente pior que o NRTL no ajuste fino de dados experimentais de LLE.</li>
         </ul>
-        <div class="highlight-box"><strong>Para polímeros:</strong> use variante modificada (Larsen-Rasmussen, 1987) - UNIQUAC padrão subestima a entropia de mistura de cadeias longas.</div>`
+        <div class="highlight-box">Para a modelagem precisa de LLE de macromoléculas e polímeros, deve-se utilizar a variante UNIQUAC de volume livre (Larsen-Rasmussen), que corrige defeitos do termo combinatório para cadeias longas.</div>`
     }
   },
   unifac:{
