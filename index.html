@@ -552,8 +552,8 @@ const RESULTS = {
   end_pseudos:{
     title:"Modelos sugeridos para pseudocomponentes",
     models:[
-      {name:"CEoS clássica",         key:"ceos",          style:"ceos-style"},
-      {name:"CEoS + SCMR",           key:"regras_mistura", style:"ceos-style"}
+      {name:"CEoS Clássica (PR eSRK)", key:"ceos",         style:"ceos-style"},
+      {name:"CEoS + SCMR",            key:"scmr_pseudos", style:"ceos-style"}
     ]
   },
   end_psrk:{
@@ -839,6 +839,35 @@ const MODELS_DETAIL = {
         <ul class="dot-list">
           <li>Herda a limitação de não distinguir isômeros estruturais.</li>
           <li>Cobertura de grupos funcionais menor que o UNIFAC-VLE original.</li>
+        </ul>`
+    }
+  },
+  scmr_pseudos:{
+    name:"CEoS + SCMR", tag:"Regras de Mistura Avançadas",
+    pill:"Pseudocomponentes · Frações de Petróleo",
+    accent:"#4a5a6a",
+    tabs:{
+      "Conceito":`
+        <p class="section-label">Self-Consistent Mixing Rule (SCMR)</p>
+        <p class="prose">A SCMR (Staudt & Soares, 2012) é uma regra de mistura que integra modelos de energia livre de Gibbs em excesso (<i>g</i><sup>E</sup>) ao parâmetro atrativo (<i>a</i>) de Equações de Estado Cúbicas. Sua grande inovação matemática é ser "autoconsistente" — em baixas pressões, ela garante a reprodução exata do comportamento do modelo de <i>g</i><sup>E</sup> original, superando as inconsistências das regras antigas como MHV1 e Wong-Sandler.</p>
+        <p class="section-label">Acoplamento com modelos preditivos</p>
+        <div class="eq-block">CEoS + SCMR + Scatchard-Hildebrand (SH)</div>
+        <div class="eq-block">CEoS + SCMR + F-SAC</div>`,
+      "Aplicação":`
+        <p class="prose">O uso da CEoS acoplada à SCMR representa o estado da arte para a modelagem termodinâmica de <strong>frações de petróleo e pseudocomponentes</strong> em condições severas de reservatório ou refino.</p>
+        <ul class="dot-list">
+          <li><strong>Com Scatchard-Hildebrand (SH):</strong> A Teoria das Soluções Regulares (SH) é perfeita para modelar frações apolares do petróleo. Ela modela o equilíbrio não-ideal baseando-se unicamente no <i>parâmetro de solubilidade</i> (<i>δ</i>) e no volume molar dos pseudocomponentes, que são fáceis de estimar via correlações de densidade e ponto de ebulição.</li>
+          <li><strong>Com F-SAC:</strong> O modelo Functional-Segment Activity Coefficient é usado em misturas onde a superfície funcional das frações pesadas é estimada ou conhecida, permitindo a predição universal da solubilidade em toda a curva de fase.</li>
+        </ul>`,
+      "Características":`
+        <ul class="dot-list">
+          <li>Extrapola os modelos termodinâmicos rigorosos de fase líquida para regimes de gás real e alta pressão sem comprometer a consistência termodinâmica.</li>
+          <li>Dispensa a necessidade de matrizes de parâmetros de interação binária experimental para cada fração (ao contrário de modelos correlativos clássicos), dependendo apenas das propriedades predizíveis de cada "corte" de petróleo.</li>
+        </ul>`,
+      "Limitações":`
+        <ul class="dot-list">
+          <li><strong>Dependência de Correlações:</strong> O sucesso absoluto da CEoS+SCMR+SH depende da precisão com que as propriedades puras (T<sub>c</sub>, P<sub>c</sub>, ω, δ, v<sup>L</sup>) de cada pseudocomponente foram estimadas por métodos empíricos (como as equações de Lee-Kesler ou Riazi-Daubert). Erros na caracterização da fração arruínam a predição.</li>
+          <li>São modelos avançados que exigem maior esforço computacional e implementação dedicada, visto que muitas plataformas de simulação comercial antigas não trazem a SCMR implementada de forma nativa.</li>
         </ul>`
     }
   },
